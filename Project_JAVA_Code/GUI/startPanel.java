@@ -2,6 +2,7 @@ package GUI;
 
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+
 import javax.swing.JPanel;
 
 // Contains all the content for the start Screen. 
@@ -12,16 +13,10 @@ public class startPanel extends JPanel {
 
 
 	GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-
 	
 	public startPanel(){
 				
 		setLayout(null); 
 		
-		
-		
-	}
-	
-
-
+	}	
 }
