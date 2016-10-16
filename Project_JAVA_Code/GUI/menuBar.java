@@ -1,5 +1,6 @@
 package GUI;
 
+import java.awt.BorderLayout;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
@@ -24,17 +25,16 @@ public class menuBar  extends JPanel{
 	private JMenuItem exitJMI; 
 	
 	private JMenuItem[] resolutionsJMI = new JMenuItem[16];// creates an array of JMenuItems
-	
 
 	public menuBar(){
 	
-	setLayout(null); 
+	setLayout(new BorderLayout()); 
 	
 	// --------------- Menu Bar Attributes -----------//
 	menuBar = new JMenuBar(); 
-	menuBar.setBounds(0, 0,gd.getDisplayMode().getWidth(), 25);
+	//menuBar.setBounds(0, 0,gd.getDisplayMode().getWidth(), 25);
 	menuBar.setVisible(true);
-	add(menuBar);
+	add(menuBar, BorderLayout.PAGE_START);
 	
 	
 	// -----File menu bar item Attributes ----//
@@ -87,97 +87,82 @@ public class menuBar  extends JPanel{
 	resolutionsJMI[0].addActionListener(new ActionListener() {
 
 		public void actionPerformed(ActionEvent e){
-		menuBar.setBounds(0, 0,1920,25);
+		//menuBar.setBounds(0, 0,1920,25);
 		Main.frame.setSize(1920,1080);
 	  }
 	});
 	resolutionsJMI[1].addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e){
-		menuBar.setBounds(0, 0,1768,25);
 		Main.frame.setSize(1768,992);
 	  }
 	});
 	resolutionsJMI[2].addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e){
-		menuBar.setBounds(0, 0,1680,25);
 		Main.frame.setSize(1680,1050);
 	  }
 	});
 	resolutionsJMI[3].addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e){
-		menuBar.setBounds(0, 0,1600,25);
 		Main.frame.setSize(1600,1024);
 	  }
 	});
 	resolutionsJMI[4].addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e){
-		menuBar.setBounds(0, 0,1600,25);
 		Main.frame.setSize(1600,900);
 	  }
 	});
 	resolutionsJMI[5].addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e){
-		menuBar.setBounds(0, 0,1366,25);
 		Main.frame.setSize(1366,768);
 	  }
 	});
 	resolutionsJMI[6].addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e){
-		menuBar.setBounds(0, 0,1360,25);
 		Main.frame.setSize(1360,768);
 	  }
 	});
 	resolutionsJMI[7].addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e){
-		menuBar.setBounds(0, 0,1280,25);
 		Main.frame.setSize(1280,1024);
 	  }
 	});	
 	resolutionsJMI[8].addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e){
-		menuBar.setBounds(0, 0,1280,25);
 		Main.frame.setSize(1280,960);
 	  }
 	});
 	resolutionsJMI[9].addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e){
-		menuBar.setBounds(0, 0,1280,25);
 		Main.frame.setSize(1280,800);
 	  }
 	});
 	resolutionsJMI[10].addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e){
-		menuBar.setBounds(0, 0,1280,25);
 		Main.frame.setSize(1280,768);
 	  }
 	});
 	resolutionsJMI[11].addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e){
-		menuBar.setBounds(0, 0,1280,25);
 		Main.frame.setSize(1280,720);
 	  }
 	});
 	resolutionsJMI[12].addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e){
-		menuBar.setBounds(0, 0,1176,25);
 		Main.frame.setSize(1176,664);
 	  }
 	});
 	resolutionsJMI[13].addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e){
-		menuBar.setBounds(0, 0,1152,25);
 		Main.frame.setSize(1152,864);
 	  }
 	});
 	resolutionsJMI[14].addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e){
-		menuBar.setBounds(0, 0,1024,25);
 		Main.frame.setSize(1024,768);
 	  }
 	});
 	resolutionsJMI[15].addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e){
-		menuBar.setBounds(0, 0,800,25);
 		Main.frame.setSize(800,600);
 	  }
 	});
