@@ -16,7 +16,8 @@ public class gameBoardPanel extends JPanel{
 	
 	GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 	
-	private GridBagConstraints gbc = new GridBagConstraints(); 
+    GridBagConstraints c = new GridBagConstraints();
+	
 	private ImageIcon bgImage = new ImageIcon(this.getClass().getResource("mancala_GB.jpg"));
 	
 	private JLabel bgLabel; 
@@ -24,16 +25,15 @@ public class gameBoardPanel extends JPanel{
 	public gameBoardPanel() throws MalformedURLException, IOException{
 		
 		setLayout(new GridBagLayout());
-		
-		
+		 
 		Image scaledImage = bgImage.getImage().getScaledInstance(gd.getDisplayMode().getWidth(),gd.getDisplayMode().getHeight(), Image.SCALE_DEFAULT);
 
 		bgImage.setImage(scaledImage);
-		gbc.gridx = 0; 
-		gbc.gridy = 0; 
+		c.gridx = 0; 
+		c.gridy = 0; 
 		bgLabel = new JLabel(bgImage); 
-		add(bgLabel,gbc); 
-		
+		add(bgLabel,c); 
+	
 	}
 
 }
