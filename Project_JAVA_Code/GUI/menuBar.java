@@ -25,8 +25,9 @@ public class menuBar  extends JPanel{
 	private JMenuItem exitJMI; 
 	
 	private JMenuItem[] resolutionsJMI = new JMenuItem[16];// creates an array of JMenuItems
-
-	public menuBar(){
+	
+	
+	public JMenuBar createMenuBar(){
 	
 	setLayout(new BorderLayout()); 
 	
@@ -34,7 +35,7 @@ public class menuBar  extends JPanel{
 	menuBar = new JMenuBar(); 
 	//menuBar.setBounds(0, 0,gd.getDisplayMode().getWidth(), 25);
 	menuBar.setVisible(true);
-	add(menuBar, BorderLayout.PAGE_START);
+	add(menuBar);
 	
 	
 	// -----File menu bar item Attributes ----//
@@ -174,6 +175,7 @@ public class menuBar  extends JPanel{
 		resolutionsJMI[0].setRolloverEnabled(true);
 		resolutionJM.add(resolutionsJMI[i]);
 	}
+	return menuBar;
 	
 	
 	}
