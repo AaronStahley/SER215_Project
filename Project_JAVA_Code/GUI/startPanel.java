@@ -1,7 +1,5 @@
 package GUI;
 
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -17,11 +15,7 @@ public class startPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	private JButton startButton;
-	
-	GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-	
-	
-	
+		
 	public startPanel(){
 				
 		setLayout(null); 
