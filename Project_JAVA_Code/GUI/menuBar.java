@@ -11,8 +11,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
-import main.Main;
-
 public class menuBar  extends JPanel{
 	
 	GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
@@ -22,7 +20,9 @@ public class menuBar  extends JPanel{
 	private JMenu fileJM; 
 	private JMenu displayJM; 
 	private JMenu resolutionJM;
-	private JMenuItem exitJMI; 
+	private JMenuItem exitJMI;
+	
+	private resolution res = new resolution();
 	
 	private JMenuItem[] resolutionsJMI = new JMenuItem[16];// creates an array of JMenuItems
 	
@@ -88,83 +88,82 @@ public class menuBar  extends JPanel{
 	resolutionsJMI[0].addActionListener(new ActionListener() {
 
 		public void actionPerformed(ActionEvent e){
-		//menuBar.setBounds(0, 0,1920,25);
-		Main.frame.setSize(1920,1080);
+			res.getRes0();
 	  }
 	});
 	resolutionsJMI[1].addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e){
-		Main.frame.setSize(1768,992);
-	  }
+			res.getRes1();
+		}
 	});
 	resolutionsJMI[2].addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e){
-		Main.frame.setSize(1680,1050);
-	  }
+			res.getRes2();
+		}
 	});
 	resolutionsJMI[3].addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e){
-		Main.frame.setSize(1600,1024);
+			res.getRes3();
 	  }
 	});
 	resolutionsJMI[4].addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e){
-		Main.frame.setSize(1600,900);
+			res.getRes4();
 	  }
 	});
 	resolutionsJMI[5].addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e){
-		Main.frame.setSize(1366,768);
+			res.getRes5();
 	  }
 	});
 	resolutionsJMI[6].addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e){
-		Main.frame.setSize(1360,768);
+			res.getRes6();
 	  }
 	});
 	resolutionsJMI[7].addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e){
-		Main.frame.setSize(1280,1024);
+			res.getRes7();
 	  }
 	});	
 	resolutionsJMI[8].addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e){
-		Main.frame.setSize(1280,960);
+			res.getRes8();
 	  }
 	});
 	resolutionsJMI[9].addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e){
-		Main.frame.setSize(1280,800);
+			res.getRes9();
 	  }
 	});
 	resolutionsJMI[10].addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e){
-		Main.frame.setSize(1280,768);
+			res.getRes10();
 	  }
 	});
 	resolutionsJMI[11].addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e){
-		Main.frame.setSize(1280,720);
+			res.getRes11();
 	  }
 	});
 	resolutionsJMI[12].addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e){
-		Main.frame.setSize(1176,664);
+			res.getRes12();
 	  }
 	});
 	resolutionsJMI[13].addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e){
-		Main.frame.setSize(1152,864);
+			res.getRes13();
 	  }
 	});
 	resolutionsJMI[14].addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e){
-		Main.frame.setSize(1024,768);
+			res.getRes14();
 	  }
 	});
 	resolutionsJMI[15].addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e){
-		Main.frame.setSize(800,600);
+			res.getRes15();
 	  }
 	});
 	
