@@ -54,10 +54,8 @@ public class Main {
 		//frame.setSize(gd.getDisplayMode().getWidth(),gd.getDisplayMode().getHeight());
 
 	
-		
 		frame.setVisible(true);
-		//frame.setSize(1600,900 );
-		res.getRes4(); // need to do this so that the buttons will apear. 
+		res.getRes14(); 
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
 		
