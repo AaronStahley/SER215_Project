@@ -2,10 +2,28 @@ package GUI;
 
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+
 import main.Main;
 
 public class resolution {
 	
+	private ImageIcon game_Board_Icon = new ImageIcon(this.getClass().getResource("mancala_GB_01.png"));
+	
+	private ImageIcon stones_04_Image = new ImageIcon(this.getClass().getResource("Mancala_Stones_04.png"));
+	
+	private ImageIcon title_Panel_Icon = new ImageIcon(this.getClass().getResource("Title_Panel_BG_01.png"));
+	private ImageIcon start_Icon = new ImageIcon(this.getClass().getResource("Start_Button.png"));
+	private ImageIcon exit_Icon = new ImageIcon(this.getClass().getResource("Exit_Button.png"));
+	private ImageIcon instructions_Icon = new ImageIcon(this.getClass().getResource("Instructions_Button.png"));
+	
+	private ImageIcon start_Rollover_Icon = new ImageIcon(this.getClass().getResource("Start_Rollover_Button.png"));
+	private ImageIcon instructions_Rollover_Icon = new ImageIcon(this.getClass().getResource("Instructions_Rollover_Button.png"));
+	private ImageIcon exit_Rollover_Icon = new ImageIcon(this.getClass().getResource("Exit_Rollover_Button.png"));
+
+
 	GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 	
 	int width;
@@ -43,11 +61,43 @@ public class resolution {
 	}
 	
 	public void getRes4(){
+		
 		Main.frame.setSize(1600,900);
 		Main.frame.setLocationRelativeTo(null);
-		
-		gameBoardPanel.bgLabel.setBounds(0, 0, 1600,900);
+			
 
+		// Scales the title image to 1600/900
+		Image title_Panel_Scaled = title_Panel_Icon.getImage().getScaledInstance(1600, 900, Image.SCALE_DEFAULT);
+		ImageIcon title_Panel_Icon = new ImageIcon(title_Panel_Scaled);
+	
+		startPanel.startBGLabel.setBounds(0, 0, 1600, 900);
+		startPanel.startBGLabel.setIcon(title_Panel_Icon);
+		
+		Image game_Board_Panel_Scaled = game_Board_Icon.getImage().getScaledInstance(1600, 900, Image.SCALE_DEFAULT);
+		ImageIcon game_Board_Icon = new ImageIcon(game_Board_Panel_Scaled);
+	
+		gameBoardPanel.bgLabel.setBounds(0, 0, 1600, 900);
+		gameBoardPanel.bgLabel.setIcon(game_Board_Icon);
+	
+		
+		startPanel.startButton.setBounds(650, 350, 300, 75);
+		startPanel.startButton.setIcon(start_Icon);
+		startPanel.startButton.setRolloverIcon(start_Rollover_Icon);
+		
+		startPanel.InstructionsButton.setBounds(550,450,500,75);
+		startPanel.InstructionsButton.setIcon(instructions_Icon);
+		startPanel.InstructionsButton.setRolloverIcon(instructions_Rollover_Icon);
+
+		
+		startPanel.exitButton.setBounds(650,550,300,75);
+		startPanel.exitButton.setIcon(exit_Icon);
+		startPanel.exitButton.setRolloverIcon(exit_Rollover_Icon);
+
+
+		for(int i = 0; i < gameBoardPanel.pits.length; i++){
+			gameBoardPanel.pits[i].setIcon(stones_04_Image);
+		}
+		
 		gameBoardPanel.pits[0].setBounds(359, 520, 100, 100);
 		gameBoardPanel.pits[1].setBounds(515, 520, 100, 100);
 		gameBoardPanel.pits[2].setBounds(671, 520, 100, 100);
@@ -122,16 +172,131 @@ public class resolution {
 	public void getRes14(){
 		Main.frame.setSize(1024,768);
 		Main.frame.setLocationRelativeTo(null);
+		
+		//This is all the stuff for the title_Panel
+		
+		// Scales the title image to 800/600
+		Image title_Panel_Scaled = title_Panel_Icon.getImage().getScaledInstance(1024, 768, Image.SCALE_DEFAULT);
+		ImageIcon title_Panel_Icon = new ImageIcon(title_Panel_Scaled);
+	
+		startPanel.startBGLabel.setBounds(0, 0, 1024, 768);
+		startPanel.startBGLabel.setIcon(title_Panel_Icon);
+	
+		
+		startPanel.startButton.setBounds(375, 280, 300, 75);
+		startPanel.startButton.setIcon(start_Icon);
+		startPanel.startButton.setRolloverIcon(start_Rollover_Icon);
+		
+		startPanel.InstructionsButton.setBounds(275,380,500,75);
+		startPanel.InstructionsButton.setIcon(instructions_Icon);
+		startPanel.InstructionsButton.setRolloverIcon(instructions_Rollover_Icon);
+
+		
+		startPanel.exitButton.setBounds(375,480,300,75);
+		startPanel.exitButton.setIcon(exit_Icon);
+		startPanel.exitButton.setRolloverIcon(exit_Rollover_Icon);
+
+		//---------------------------------------------------------------//
+		
+		
+		// This is all the stuff for the game_Board_Panel 
+		Image game_Board_Panel_Scaled = game_Board_Icon.getImage().getScaledInstance(1024, 768, Image.SCALE_DEFAULT);
+		ImageIcon new_game_Board_Icon = new ImageIcon(game_Board_Panel_Scaled);
+	
+		gameBoardPanel.bgLabel.setBounds(0, 0, 1024, 768);
+		gameBoardPanel.bgLabel.setIcon(new_game_Board_Icon);
+		
+		Image stones_04_Scaled = stones_04_Image.getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT);
+		ImageIcon stones_04_Icon = new ImageIcon(stones_04_Scaled);
+		
+		for(int i = 0; i < gameBoardPanel.pits.length; i++){
+			gameBoardPanel.pits[i].setIcon(stones_04_Icon);
+		}
+		
+		gameBoardPanel.pits[0].setBounds(226, 453, 70, 70);
+		gameBoardPanel.pits[1].setBounds(326, 453, 70, 70);
+		gameBoardPanel.pits[2].setBounds(426, 453, 70, 70);
+		gameBoardPanel.pits[3].setBounds(526, 453, 70, 70);
+		gameBoardPanel.pits[4].setBounds(626, 453, 70, 70);
+		gameBoardPanel.pits[5].setBounds(726, 453, 70, 70);
+		
+		gameBoardPanel.pits[6].setBounds(226, 243, 70, 70);
+		gameBoardPanel.pits[7].setBounds(326, 243, 70, 70);
+		gameBoardPanel.pits[8].setBounds(426, 243, 70, 70);
+		gameBoardPanel.pits[9].setBounds(526, 243, 70, 70);
+		gameBoardPanel.pits[10].setBounds(626, 243, 70, 70);
+		gameBoardPanel.pits[11].setBounds(726, 243, 70, 70);
+		
+		//--------------------------------------------------------//
 
 	}
 	
 	public void getRes15(){
 		Main.frame.setSize(800,600);
 		Main.frame.setLocationRelativeTo(null);
+		
+		//This is all the stuff for the title_Panel
+		
+		// Scales the title image to 800/600
+		Image title_Panel_Scaled = title_Panel_Icon.getImage().getScaledInstance(800, 600, Image.SCALE_DEFAULT);
+		ImageIcon title_Panel_Icon = new ImageIcon(title_Panel_Scaled);
+	
+		startPanel.startBGLabel.setBounds(0, 0, 800, 600);
+		startPanel.startBGLabel.setIcon(title_Panel_Icon);
+	
+		
+		startPanel.startButton.setBounds(265, 220, 300, 75);
+		startPanel.startButton.setIcon(start_Icon);
+		startPanel.startButton.setRolloverIcon(start_Rollover_Icon);
+		
+		startPanel.InstructionsButton.setBounds(170,320,500,75);
+		startPanel.InstructionsButton.setIcon(instructions_Icon);
+		startPanel.InstructionsButton.setRolloverIcon(instructions_Rollover_Icon);
+
+		
+		startPanel.exitButton.setBounds(265,420,300,75);
+		startPanel.exitButton.setIcon(exit_Icon);
+		startPanel.exitButton.setRolloverIcon(exit_Rollover_Icon);
+
+		//---------------------------------------------------------------//
+		
+		
+		// This is all the stuff for the game_Board_Panel 
+		Image game_Board_Panel_Scaled = game_Board_Icon.getImage().getScaledInstance(800, 600, Image.SCALE_DEFAULT);
+		ImageIcon new_game_Board_Icon = new ImageIcon(game_Board_Panel_Scaled);
+	
+		gameBoardPanel.bgLabel.setBounds(0, 0, 800, 600);
+		gameBoardPanel.bgLabel.setIcon(new_game_Board_Icon);
+		
+		Image stones_04_Scaled = stones_04_Image.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+		ImageIcon stones_04_Icon = new ImageIcon(stones_04_Scaled);
+		
+		for(int i = 0; i < gameBoardPanel.pits.length; i++){
+			gameBoardPanel.pits[i].setIcon(stones_04_Icon);
+		}
+		
+		gameBoardPanel.pits[0].setBounds(179, 355, 50, 50);
+		gameBoardPanel.pits[1].setBounds(257, 355, 50, 50);
+		gameBoardPanel.pits[2].setBounds(335, 355, 50, 50);
+		gameBoardPanel.pits[3].setBounds(413, 355, 50, 50);
+		gameBoardPanel.pits[4].setBounds(491, 355, 50, 50);
+		gameBoardPanel.pits[5].setBounds(569, 355, 50, 50);
+		
+		gameBoardPanel.pits[6].setBounds(179, 192, 50, 50);
+		gameBoardPanel.pits[7].setBounds(257, 192, 50, 50);
+		gameBoardPanel.pits[8].setBounds(335, 192, 50, 50);
+		gameBoardPanel.pits[9].setBounds(413, 192, 50, 50);
+		gameBoardPanel.pits[10].setBounds(491, 192, 50, 50);
+		gameBoardPanel.pits[11].setBounds(569, 192, 50, 50);
+		
+		//--------------------------------------------------------//
+	
+	
+		
 
 	}
 	
-
+	
 	
 	
 	
