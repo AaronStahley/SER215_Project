@@ -6,6 +6,7 @@ import java.net.MalformedURLException;
 import javax.swing.JFrame;
 
 import GUI.gameBoardPanel;
+import GUI.instructionsPanel;
 import GUI.menuBar;
 import GUI.resolution;
 import GUI.startPanel;
@@ -19,6 +20,7 @@ public class Main {
 	public static startPanel panelStart;
 	public static menuBar mb; 
 	public static resolution res; 
+	public static instructionsPanel ip; 
 	
 	public static void main (String[] args) throws MalformedURLException, IOException{
 		
@@ -30,6 +32,7 @@ public class Main {
 		mb = new menuBar(); 
 		panelStart = new startPanel();
 		gbp = new gameBoardPanel(); 
+		ip = new instructionsPanel(); 
 		
 		
 		res = new resolution(); 
@@ -55,7 +58,7 @@ public class Main {
 
 	
 		frame.setVisible(true);
-		res.getRes14(); 
+		res.getRes15(); 
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
 		
