@@ -84,9 +84,9 @@ public class resolution {
 		startPanel.startButton.setIcon(start_Icon);
 		startPanel.startButton.setRolloverIcon(start_Rollover_Icon);
 		
-		startPanel.InstructionsButton.setBounds(550,450,500,75);
-		startPanel.InstructionsButton.setIcon(instructions_Icon);
-		startPanel.InstructionsButton.setRolloverIcon(instructions_Rollover_Icon);
+		startPanel.instructionsButton.setBounds(550,450,500,75);
+		startPanel.instructionsButton.setIcon(instructions_Icon);
+		startPanel.instructionsButton.setRolloverIcon(instructions_Rollover_Icon);
 
 		
 		startPanel.exitButton.setBounds(650,550,300,75);
@@ -187,9 +187,9 @@ public class resolution {
 		startPanel.startButton.setIcon(start_Icon);
 		startPanel.startButton.setRolloverIcon(start_Rollover_Icon);
 		
-		startPanel.InstructionsButton.setBounds(275,380,500,75);
-		startPanel.InstructionsButton.setIcon(instructions_Icon);
-		startPanel.InstructionsButton.setRolloverIcon(instructions_Rollover_Icon);
+		startPanel.instructionsButton.setBounds(275,380,500,75);
+		startPanel.instructionsButton.setIcon(instructions_Icon);
+		startPanel.instructionsButton.setRolloverIcon(instructions_Rollover_Icon);
 
 		
 		startPanel.exitButton.setBounds(375,480,300,75);
@@ -249,9 +249,9 @@ public class resolution {
 		startPanel.startButton.setIcon(start_Icon);
 		startPanel.startButton.setRolloverIcon(start_Rollover_Icon);
 		
-		startPanel.InstructionsButton.setBounds(170,320,500,75);
-		startPanel.InstructionsButton.setIcon(instructions_Icon);
-		startPanel.InstructionsButton.setRolloverIcon(instructions_Rollover_Icon);
+		startPanel.instructionsButton.setBounds(170,320,500,75);
+		startPanel.instructionsButton.setIcon(instructions_Icon);
+		startPanel.instructionsButton.setRolloverIcon(instructions_Rollover_Icon);
 
 		
 		startPanel.exitButton.setBounds(265,420,300,75);
