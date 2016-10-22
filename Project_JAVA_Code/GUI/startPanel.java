@@ -18,7 +18,7 @@ public class startPanel extends JPanel {
 	
 	public static JButton startButton;
 	public static JLabel startBGLabel; 
-	public static JButton InstructionsButton; 
+	public static JButton instructionsButton; 
 	public static JButton exitButton; 
 		
 	public startPanel(){
@@ -32,11 +32,12 @@ public class startPanel extends JPanel {
 		startButton.setBorderPainted(false);
 		add(startButton);
 		
-		InstructionsButton = new JButton("Instructions");
-		InstructionsButton.setOpaque(true);
-		InstructionsButton.setContentAreaFilled(false);
-		InstructionsButton.setBorderPainted(false);
-		add(InstructionsButton);
+		instructionsButton = new JButton("Instructions");
+		instructionsButton.setOpaque(true);
+		instructionsButton.setContentAreaFilled(false);
+		instructionsButton.setBorderPainted(false);
+		add(instructionsButton);
+	
 		
 		exitButton = new JButton("Exit");
 		exitButton.setOpaque(true);
@@ -66,6 +67,16 @@ public class startPanel extends JPanel {
 			Main.frame.getContentPane().removeAll();
 			Main.frame.getContentPane().add(Main.gbp);
 			Main.frame.revalidate(); // refreshes the JFrame. 
+		  }
+		});
+		
+		instructionsButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+				
+				// Removes the startFrame and replaces it to the instructionsPanel. 
+				Main.frame.getContentPane().removeAll();
+				Main.frame.getContentPane().add(Main.ip);
+				Main.frame.revalidate(); // refreshes the JFrame. 
 		  }
 		});
 		
