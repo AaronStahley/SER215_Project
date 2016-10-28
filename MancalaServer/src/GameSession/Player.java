@@ -1,5 +1,6 @@
 package GameSession;
 
+import Communication.GameEvent;
 import Communication.GameState;
 
 import java.io.*;
@@ -12,19 +13,25 @@ public class Player extends Socket {
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
     private GameState state;
-    private Player opponent;
+
 
     public Player() {
         // Create data input and output streams
     }
 
-    public void waitForMove() throws IOException, ClassNotFoundException {
-        this.inputStream.readObject();
+    public GameState waitForMove() throws IOException, ClassNotFoundException {
+        GameEvent playerAction = (GameEvent) this.inputStream.readObject();
 
-        //Todo: need to read input and process it
+        // Todo: need to read input and process it and then update the this.state bulk of the code should go here for processing a move
 
-//        this.setState(new GameState());
-//        this.opponent.setState(new GameState());
+
+        GameState opponentsState = this.state.generateOpponentsState();
+
+        // Todo: check to see if the game is over and update both state objects
+
+
+        
+        return opponentsState;
     }
 
     public void createStreams() throws IOException {
@@ -32,15 +39,47 @@ public class Player extends Socket {
         this.inputStream = new ObjectInputStream(this.getInputStream());
     }
 
-    public void setState(GameState state) {
+    public Player setState(GameState state) {
         this.state = state;
+        return this;
     }
 
-    public void sendState() throws IOException {
+    public Player sendState() throws IOException {
         this.outputStream.writeObject(this.state);
+        return this;
     }
 
-    public void setOpponent(Player opponent) {
-        this.opponent = opponent;
+    public Player sendOpponentLeftState() throws IOException {
+        this.setGameOver(true)
+                .setOpponentLeft(true)
+                .sendState();
+        return this;
+    }
+
+    public Player setTurn(boolean turn) {
+        this.getState().setYourTurn(turn);
+        return this;
+    }
+
+    public Player setOpponentLeft(boolean opponentLeft) {
+        this.getState().setOpponentLeft(opponentLeft);
+        return this;
+    }
+
+    public Player setGameOver(boolean gameOver) {
+        this.getState().setGameOver(gameOver);
+        return this;
+    }
+
+    public GameState getState() {
+        return state;
+    }
+
+    public void disconnect() throws IOException {
+        if (this.isConnected()) {
+            this.shutdownInput();
+            this.shutdownOutput();
+            this.close();
+        }
     }
 }
