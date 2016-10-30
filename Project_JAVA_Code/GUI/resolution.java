@@ -5,6 +5,8 @@ import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 
 import main.Main;
 
@@ -22,6 +24,13 @@ public class resolution {
 	private ImageIcon start_Rollover_Icon = new ImageIcon(this.getClass().getResource("Start_Rollover_Button.png"));
 	private ImageIcon instructions_Rollover_Icon = new ImageIcon(this.getClass().getResource("Instructions_Rollover_Button.png"));
 	private ImageIcon exit_Rollover_Icon = new ImageIcon(this.getClass().getResource("Exit_Rollover_Button.png"));
+	
+	public ImageIcon instructionsIcon = new ImageIcon(this.getClass().getResource("directions_Image.png"));
+	
+	public static JLabel instructionsLabel;
+
+
+	
 
 
 	GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
@@ -30,6 +39,10 @@ public class resolution {
 	int height; 
 
 	public resolution(){
+		
+		
+		instructionsLabel = new JLabel();
+		instructionsLabel.setIcon(instructionsIcon);
 		
 		width = gd.getDisplayMode().getWidth();
 		height = gd.getDisplayMode().getHeight();
@@ -290,11 +303,10 @@ public class resolution {
 		gameBoardPanel.pits[11].setBounds(569, 192, 50, 50);
 		
 		//--------------------------------------------------------//
+					
 	
-	
-		
-
 	}
+	
 	
 	
 	
