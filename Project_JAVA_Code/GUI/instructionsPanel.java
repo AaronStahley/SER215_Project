@@ -10,9 +10,8 @@ import javax.swing.JScrollPane;
 public class instructionsPanel extends JPanel{
 	
 	public static JButton exitButton;
-	public static JScrollPane instructionsScrollPane;
 	
-	private ImageIcon instructionsIcon = new ImageIcon(this.getClass().getResource("directions_Image.png"));
+	public static JScrollPane instructionsScrollPane;
 
 
 	public instructionsPanel(){
@@ -23,9 +22,10 @@ public class instructionsPanel extends JPanel{
 		add(exitButton);
 		
 		// NOT WORKING PROPERLY YET
-		instructionsScrollPane = new JScrollPane(new JLabel(instructionsIcon)); 
-		instructionsScrollPane.setBounds(0, 0, 795, 550);
-		add(instructionsScrollPane); 
+		instructionsScrollPane = new JScrollPane(resolution.instructionsLabel); 
+		instructionsPanel.instructionsScrollPane.setBounds(0, 0, 795, 550);
+		add(instructionsScrollPane);
+
 
 	
 	}
