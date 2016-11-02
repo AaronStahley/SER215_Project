@@ -16,7 +16,6 @@ public class Player extends Socket {
 
 
     public Player() {
-        // Create data input and output streams
     }
 
     public GameState waitForMove() throws IOException, ClassNotFoundException {
@@ -24,13 +23,16 @@ public class Player extends Socket {
 
         // Todo: need to read input and process it and then update the this.state bulk of the code should go here for processing a move
 
+//        playerAction.buttonPressed;
+//
+//        this.state.getYourPits()
+
 
         GameState opponentsState = this.state.generateOpponentsState();
 
         // Todo: check to see if the game is over and update both state objects
 
 
-        
         return opponentsState;
     }
 
