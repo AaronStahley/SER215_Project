@@ -1,1 +1,0 @@
-INDEX VERSION 1.127+C:\Users\cmarsh\Documents\GitHub\SER215\.metadata\.plugins\org.eclipse.jdt.core
