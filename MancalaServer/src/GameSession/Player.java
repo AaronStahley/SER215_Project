@@ -23,7 +23,7 @@ public class Player extends Socket {
         GameEvent playerAction = (GameEvent) this.inputStream.readObject();
 
         // Todo: need to read input and process it and then update the this.state bulk of the code should go here for processing a move
-
+//Test
 
         GameState opponentsState = this.state.generateOpponentsState();
 
