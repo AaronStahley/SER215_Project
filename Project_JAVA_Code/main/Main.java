@@ -5,7 +5,7 @@ import java.net.MalformedURLException;
 
 import javax.swing.JFrame;
 
-import Client.MancalaClient;
+import Client.mancalaClient;
 import GUI.gameBoardPanel;
 import GUI.instructionsPanel;
 import GUI.menuBar;
@@ -22,7 +22,7 @@ public class Main {
 	public static menuBar mb; 
 	public static resolution res; 
 	public static instructionsPanel ip; 
-	public static MancalaClient client; 
+	public static mancalaClient client; 
 	
 	public static void main (String[] args) throws MalformedURLException, IOException{
 		
@@ -40,7 +40,7 @@ public class Main {
 		
 		
 		// Client stuff 
-		client = new MancalaClient();
+		client = new mancalaClient();
 		client.isStandAlone = true; 
 		
 		if(args.length == 1){
