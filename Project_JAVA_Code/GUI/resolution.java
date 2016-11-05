@@ -6,13 +6,16 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JScrollPane;
 
 import main.Main;
 
 public class resolution {
 	
 	private ImageIcon game_Board_Icon = new ImageIcon(this.getClass().getResource("mancala_GB_01.png"));
+	
+	private ImageIcon player_01_turn = new ImageIcon(this.getClass().getResource("Player_01_Turn.png"));
+//	private ImageIcon player_02_turn = new ImageIcon(this.getClass().getResource("Player_02_Turn.png"));
+
 	
 	private ImageIcon stones_04_Image = new ImageIcon(this.getClass().getResource("Mancala_Stones_04.png"));
 	
@@ -28,9 +31,6 @@ public class resolution {
 	public ImageIcon instructionsIcon = new ImageIcon(this.getClass().getResource("directions_Image.png"));
 	
 	public static JLabel instructionsLabel;
-
-
-	
 
 
 	GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
@@ -107,23 +107,27 @@ public class resolution {
 		startPanel.exitButton.setRolloverIcon(exit_Rollover_Icon);
 
 
-		for(int i = 0; i < gameBoardPanel.pits.length; i++){
-			gameBoardPanel.pits[i].setIcon(stones_04_Image);
+		for(int i = 0; i < gameBoardPanel.pitButton.length; i++){
+			gameBoardPanel.pitButton[i].setIcon(stones_04_Image);
 		}
 		
-		gameBoardPanel.pits[0].setBounds(359, 520, 100, 100);
-		gameBoardPanel.pits[1].setBounds(515, 520, 100, 100);
-		gameBoardPanel.pits[2].setBounds(671, 520, 100, 100);
-		gameBoardPanel.pits[3].setBounds(827, 520, 100, 100);
-		gameBoardPanel.pits[4].setBounds(983, 520, 100, 100);
-		gameBoardPanel.pits[5].setBounds(1139, 520, 100, 100);
+		for(int i = 0; i < gameBoardPanel.pitLabel.length; i++){
+			gameBoardPanel.pitLabel[i].setIcon(stones_04_Image);
+		}
 		
-		gameBoardPanel.pits[6].setBounds(359, 278, 100, 100);
-		gameBoardPanel.pits[7].setBounds(515, 278, 100, 100);
-		gameBoardPanel.pits[8].setBounds(671, 278, 100, 100);
-		gameBoardPanel.pits[9].setBounds(827, 278, 100, 100);
-		gameBoardPanel.pits[10].setBounds(983, 278, 100, 100);
-		gameBoardPanel.pits[11].setBounds(1139, 278, 100, 100);
+		gameBoardPanel.pitButton[0].setBounds(359, 520, 100, 100);
+		gameBoardPanel.pitButton[1].setBounds(515, 520, 100, 100);
+		gameBoardPanel.pitButton[2].setBounds(671, 520, 100, 100);
+		gameBoardPanel.pitButton[3].setBounds(827, 520, 100, 100);
+		gameBoardPanel.pitButton[4].setBounds(983, 520, 100, 100);
+		gameBoardPanel.pitButton[5].setBounds(1139, 520, 100, 100);
+		
+		gameBoardPanel.pitLabel[0].setBounds(359, 278, 100, 100);
+		gameBoardPanel.pitLabel[1].setBounds(515, 278, 100, 100);
+		gameBoardPanel.pitLabel[2].setBounds(671, 278, 100, 100);
+		gameBoardPanel.pitLabel[3].setBounds(827, 278, 100, 100);
+		gameBoardPanel.pitLabel[4].setBounds(983, 278, 100, 100);
+		gameBoardPanel.pitLabel[5].setBounds(1139, 278, 100, 100);
 		
 
 	}
@@ -222,23 +226,27 @@ public class resolution {
 		Image stones_04_Scaled = stones_04_Image.getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT);
 		ImageIcon stones_04_Icon = new ImageIcon(stones_04_Scaled);
 		
-		for(int i = 0; i < gameBoardPanel.pits.length; i++){
-			gameBoardPanel.pits[i].setIcon(stones_04_Icon);
+		for(int i = 0; i < gameBoardPanel.pitButton.length; i++){
+			gameBoardPanel.pitButton[i].setIcon(stones_04_Icon);
 		}
 		
-		gameBoardPanel.pits[0].setBounds(226, 453, 70, 70);
-		gameBoardPanel.pits[1].setBounds(326, 453, 70, 70);
-		gameBoardPanel.pits[2].setBounds(426, 453, 70, 70);
-		gameBoardPanel.pits[3].setBounds(526, 453, 70, 70);
-		gameBoardPanel.pits[4].setBounds(626, 453, 70, 70);
-		gameBoardPanel.pits[5].setBounds(726, 453, 70, 70);
+		for(int i = 0; i < gameBoardPanel.pitLabel.length; i++){
+			gameBoardPanel.pitLabel[i].setIcon(stones_04_Icon);
+		}
 		
-		gameBoardPanel.pits[6].setBounds(226, 243, 70, 70);
-		gameBoardPanel.pits[7].setBounds(326, 243, 70, 70);
-		gameBoardPanel.pits[8].setBounds(426, 243, 70, 70);
-		gameBoardPanel.pits[9].setBounds(526, 243, 70, 70);
-		gameBoardPanel.pits[10].setBounds(626, 243, 70, 70);
-		gameBoardPanel.pits[11].setBounds(726, 243, 70, 70);
+		gameBoardPanel.pitButton[0].setBounds(226, 453, 70, 70);
+		gameBoardPanel.pitButton[1].setBounds(326, 453, 70, 70);
+		gameBoardPanel.pitButton[2].setBounds(426, 453, 70, 70);
+		gameBoardPanel.pitButton[3].setBounds(526, 453, 70, 70);
+		gameBoardPanel.pitButton[4].setBounds(626, 453, 70, 70);
+		gameBoardPanel.pitButton[5].setBounds(726, 453, 70, 70);
+		
+		gameBoardPanel.pitLabel[0].setBounds(226, 243, 70, 70);
+		gameBoardPanel.pitLabel[1].setBounds(326, 243, 70, 70);
+		gameBoardPanel.pitLabel[2].setBounds(426, 243, 70, 70);
+		gameBoardPanel.pitLabel[3].setBounds(526, 243, 70, 70);
+		gameBoardPanel.pitLabel[4].setBounds(626, 243, 70, 70);
+		gameBoardPanel.pitLabel[5].setBounds(726, 243, 70, 70);
 		
 		//--------------------------------------------------------//
 
@@ -247,6 +255,7 @@ public class resolution {
 	public void getRes15(){
 		Main.frame.setSize(800,600);
 		Main.frame.setLocationRelativeTo(null);
+
 		
 		//This is all the stuff for the title_Panel
 		
@@ -284,25 +293,62 @@ public class resolution {
 		Image stones_04_Scaled = stones_04_Image.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
 		ImageIcon stones_04_Icon = new ImageIcon(stones_04_Scaled);
 		
-		for(int i = 0; i < gameBoardPanel.pits.length; i++){
-			gameBoardPanel.pits[i].setIcon(stones_04_Icon);
+		
+		gameBoardPanel.playerTurn.setBounds(150, 30, 500, 75);
+		gameBoardPanel.playerTurn.setIcon(player_01_turn);		
+		
+		gameBoardPanel.mancalaLeft.setBounds(112, 200, 50, 200);
+		gameBoardPanel.mancalaRight.setBounds(640, 200, 50, 200);
+
+		
+		for(int i = 0; i < gameBoardPanel.pitButton.length; i++){
+			gameBoardPanel.pitButton[i].setIcon(stones_04_Icon);
 		}
 		
-		gameBoardPanel.pits[0].setBounds(179, 355, 50, 50);
-		gameBoardPanel.pits[1].setBounds(257, 355, 50, 50);
-		gameBoardPanel.pits[2].setBounds(335, 355, 50, 50);
-		gameBoardPanel.pits[3].setBounds(413, 355, 50, 50);
-		gameBoardPanel.pits[4].setBounds(491, 355, 50, 50);
-		gameBoardPanel.pits[5].setBounds(569, 355, 50, 50);
+		for(int i = 0; i < gameBoardPanel.pitLabel.length; i++){
+			gameBoardPanel.pitLabel[i].setIcon(stones_04_Icon);
+		}
 		
-		gameBoardPanel.pits[6].setBounds(179, 192, 50, 50);
-		gameBoardPanel.pits[7].setBounds(257, 192, 50, 50);
-		gameBoardPanel.pits[8].setBounds(335, 192, 50, 50);
-		gameBoardPanel.pits[9].setBounds(413, 192, 50, 50);
-		gameBoardPanel.pits[10].setBounds(491, 192, 50, 50);
-		gameBoardPanel.pits[11].setBounds(569, 192, 50, 50);
+		gameBoardPanel.pitButton[0].setBounds(179, 355, 50, 50);
+		gameBoardPanel.pitButton[1].setBounds(257, 355, 50, 50);
+		gameBoardPanel.pitButton[2].setBounds(335, 355, 50, 50);
+		gameBoardPanel.pitButton[3].setBounds(413, 355, 50, 50);
+		gameBoardPanel.pitButton[4].setBounds(491, 355, 50, 50);
+		gameBoardPanel.pitButton[5].setBounds(569, 355, 50, 50);
+		
+		gameBoardPanel.pitLabel[0].setBounds(179, 192, 50, 50);
+		gameBoardPanel.pitLabel[1].setBounds(257, 192, 50, 50);
+		gameBoardPanel.pitLabel[2].setBounds(335, 192, 50, 50);
+		gameBoardPanel.pitLabel[3].setBounds(413, 192, 50, 50);
+		gameBoardPanel.pitLabel[4].setBounds(491, 192, 50, 50);
+		gameBoardPanel.pitLabel[5].setBounds(569, 192, 50, 50);
+		
+		gameBoardPanel.pitNumberLabel[0].setBounds(200, 320, 15, 15); 
+		gameBoardPanel.pitNumberLabel[1].setBounds(275, 320, 10, 10); 
+		gameBoardPanel.pitNumberLabel[2].setBounds(355, 320, 10, 10); 
+		gameBoardPanel.pitNumberLabel[3].setBounds(435, 320, 10, 10); 
+		gameBoardPanel.pitNumberLabel[4].setBounds(515, 320, 10, 10); 
+		gameBoardPanel.pitNumberLabel[5].setBounds(590, 320, 10, 10); 
+		gameBoardPanel.pitNumberLabel[6].setBounds(200, 270, 10, 10); 
+		gameBoardPanel.pitNumberLabel[7].setBounds(275, 270, 10, 10); 
+		gameBoardPanel.pitNumberLabel[8].setBounds(355, 270, 10, 10); 
+		gameBoardPanel.pitNumberLabel[9].setBounds(435, 270, 10, 10); 
+		gameBoardPanel.pitNumberLabel[10].setBounds(515, 270, 10, 10); 
+		gameBoardPanel.pitNumberLabel[11].setBounds(590, 270, 10, 10); 
+
+		//--------------------------------------------------------//
+		
+		//-------------------Instructions Panel ------------------// 
+		
+		
+		
+		instructionsPanel.StartButton.setBounds(335,520,100,25);
+		
+		
 		
 		//--------------------------------------------------------//
+
+	
 					
 	
 	}
