@@ -22,6 +22,9 @@ public class gameBoardPanel extends JPanel{
 	
 	public static JLabel[] pitNumberLabel = new JLabel[12];
 	
+	public static JLabel mancalaLeftCountLabel;
+	public static JLabel mancalaRightCountLabel;
+	
 	public static JLabel mancalaLeft;
 	public static JLabel mancalaRight;
 	
@@ -41,6 +44,14 @@ public class gameBoardPanel extends JPanel{
 		
 		mancalaRight = new JLabel(); 
 		add(mancalaRight); 
+		
+		mancalaLeftCountLabel = new JLabel("0");
+		mancalaLeftCountLabel.setForeground(Color.WHITE);
+		add(mancalaLeftCountLabel);
+		
+		mancalaRightCountLabel = new JLabel("0");
+		mancalaRightCountLabel.setForeground(Color.WHITE);
+		add(mancalaRightCountLabel);
 		
 		pitButton[0] = new JButton();
 		pitButton[1] = new JButton(); 

@@ -14,7 +14,7 @@ public class resolution {
 	private ImageIcon game_Board_Icon = new ImageIcon(this.getClass().getResource("mancala_GB_01.png"));
 	
 	private ImageIcon player_01_turn = new ImageIcon(this.getClass().getResource("Player_01_Turn.png"));
-//	private ImageIcon player_02_turn = new ImageIcon(this.getClass().getResource("Player_02_Turn.png"));
+	private ImageIcon player_02_turn = new ImageIcon(this.getClass().getResource("Player_02_Turn.png"));
 
 	
 	private ImageIcon stones_04_Image = new ImageIcon(this.getClass().getResource("Mancala_Stones_04.png"));
@@ -30,6 +30,34 @@ public class resolution {
 	
 	public ImageIcon instructionsIcon = new ImageIcon(this.getClass().getResource("directions_Image.png"));
 	
+	public ImageIcon mancala_Stones_Icon_01 = new ImageIcon(this.getClass().getResource("Player_Mancala_Stones_01.png"));
+	public ImageIcon mancala_Stones_Icon_02 = new ImageIcon(this.getClass().getResource("Player_Mancala_Stones_02.png"));
+	public ImageIcon mancala_Stones_Icon_03 = new ImageIcon(this.getClass().getResource("Player_Mancala_Stones_03.png"));
+	public ImageIcon mancala_Stones_Icon_04 = new ImageIcon(this.getClass().getResource("Player_Mancala_Stones_04.png"));
+	public ImageIcon mancala_Stones_Icon_05 = new ImageIcon(this.getClass().getResource("Player_Mancala_Stones_05.png"));
+	public ImageIcon mancala_Stones_Icon_06 = new ImageIcon(this.getClass().getResource("Player_Mancala_Stones_06.png"));
+	public ImageIcon mancala_Stones_Icon_07 = new ImageIcon(this.getClass().getResource("Player_Mancala_Stones_07.png"));
+	public ImageIcon mancala_Stones_Icon_08 = new ImageIcon(this.getClass().getResource("Player_Mancala_Stones_08.png"));
+	public ImageIcon mancala_Stones_Icon_09 = new ImageIcon(this.getClass().getResource("Player_Mancala_Stones_09.png"));
+	public ImageIcon mancala_Stones_Icon_10 = new ImageIcon(this.getClass().getResource("Player_Mancala_Stones_10.png"));
+	public ImageIcon mancala_Stones_Icon_11 = new ImageIcon(this.getClass().getResource("Player_Mancala_Stones_11.png"));
+	public ImageIcon mancala_Stones_Icon_12 = new ImageIcon(this.getClass().getResource("Player_Mancala_Stones_12.png"));
+	
+	public ImageIcon pit_Stones_Icon_01 = new ImageIcon(this.getClass().getResource("Mancala_Stones_01.png"));
+	public ImageIcon pit_Stones_Icon_02 = new ImageIcon(this.getClass().getResource("Mancala_Stones_02.png"));
+	public ImageIcon pit_Stones_Icon_03 = new ImageIcon(this.getClass().getResource("Mancala_Stones_03.png"));
+	public ImageIcon pit_Stones_Icon_04 = new ImageIcon(this.getClass().getResource("Mancala_Stones_04.png"));
+	public ImageIcon pit_Stones_Icon_05 = new ImageIcon(this.getClass().getResource("Mancala_Stones_05.png"));
+	public ImageIcon pit_Stones_Icon_06 = new ImageIcon(this.getClass().getResource("Mancala_Stones_06.png"));
+	public ImageIcon pit_Stones_Icon_07 = new ImageIcon(this.getClass().getResource("Mancala_Stones_07.png"));
+	public ImageIcon pit_Stones_Icon_08 = new ImageIcon(this.getClass().getResource("Mancala_Stones_08.png"));
+	public ImageIcon pit_Stones_Icon_09 = new ImageIcon(this.getClass().getResource("Mancala_Stones_09.png"));
+	public ImageIcon pit_Stones_Icon_10 = new ImageIcon(this.getClass().getResource("Mancala_Stones_10.png"));
+	public ImageIcon pit_Stones_Icon_11 = new ImageIcon(this.getClass().getResource("Mancala_Stones_11.png"));
+	public ImageIcon pit_Stones_Icon_12 = new ImageIcon(this.getClass().getResource("Mancala_Stones_12.png"));
+
+	
+	
 	public static JLabel instructionsLabel;
 
 
@@ -39,7 +67,7 @@ public class resolution {
 	int height; 
 
 	public resolution(){
-		
+				
 		
 		instructionsLabel = new JLabel();
 		instructionsLabel.setIcon(instructionsIcon);
@@ -299,7 +327,10 @@ public class resolution {
 		
 		gameBoardPanel.mancalaLeft.setBounds(112, 200, 50, 200);
 		gameBoardPanel.mancalaRight.setBounds(640, 200, 50, 200);
-
+		
+		gameBoardPanel.mancalaLeftCountLabel.setBounds(158,175,15,15);
+		
+		gameBoardPanel.mancalaRightCountLabel.setBounds(632, 410, 15, 15);
 		
 		for(int i = 0; i < gameBoardPanel.pitButton.length; i++){
 			gameBoardPanel.pitButton[i].setIcon(stones_04_Icon);
