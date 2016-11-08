@@ -11,50 +11,50 @@ import main.Main;
 
 public class resolution {
 	
-	private ImageIcon game_Board_Icon = new ImageIcon(this.getClass().getResource("mancala_GB_01.png"));
+	private ImageIcon game_Board_Icon = new ImageIcon(this.getClass().getResource("/resources/mancala_GB_01.png"));
 	
-	private ImageIcon player_01_turn = new ImageIcon(this.getClass().getResource("Player_01_Turn.png"));
-	private ImageIcon player_02_turn = new ImageIcon(this.getClass().getResource("Player_02_Turn.png"));
+	private ImageIcon player_01_turn = new ImageIcon(this.getClass().getResource("/resources/Player_01_Turn.png"));
+	private ImageIcon player_02_turn = new ImageIcon(this.getClass().getResource("/resources/Player_02_Turn.png"));
 
 	
-	private ImageIcon stones_04_Image = new ImageIcon(this.getClass().getResource("Mancala_Stones_04.png"));
+	private ImageIcon stones_04_Image = new ImageIcon(this.getClass().getResource("/resources/Mancala_Stones_04.png"));
 	
-	private ImageIcon title_Panel_Icon = new ImageIcon(this.getClass().getResource("Title_Panel_BG_01.png"));
-	private ImageIcon start_Icon = new ImageIcon(this.getClass().getResource("Start_Button.png"));
-	private ImageIcon exit_Icon = new ImageIcon(this.getClass().getResource("Exit_Button.png"));
-	private ImageIcon instructions_Icon = new ImageIcon(this.getClass().getResource("Instructions_Button.png"));
+	private ImageIcon title_Panel_Icon = new ImageIcon(this.getClass().getResource("/resources/Title_Panel_BG_01.png"));
+	private ImageIcon start_Icon = new ImageIcon(this.getClass().getResource("/resources/Start_Button.png"));
+	private ImageIcon exit_Icon = new ImageIcon(this.getClass().getResource("/resources/Exit_Button.png"));
+	private ImageIcon instructions_Icon = new ImageIcon(this.getClass().getResource("/resources/Instructions_Button.png"));
 	
-	private ImageIcon start_Rollover_Icon = new ImageIcon(this.getClass().getResource("Start_Rollover_Button.png"));
-	private ImageIcon instructions_Rollover_Icon = new ImageIcon(this.getClass().getResource("Instructions_Rollover_Button.png"));
-	private ImageIcon exit_Rollover_Icon = new ImageIcon(this.getClass().getResource("Exit_Rollover_Button.png"));
+	private ImageIcon start_Rollover_Icon = new ImageIcon(this.getClass().getResource("/resources/Start_Rollover_Button.png"));
+	private ImageIcon instructions_Rollover_Icon = new ImageIcon(this.getClass().getResource("/resources/Instructions_Rollover_Button.png"));
+	private ImageIcon exit_Rollover_Icon = new ImageIcon(this.getClass().getResource("/resources/Exit_Rollover_Button.png"));
 	
-	public ImageIcon instructionsIcon = new ImageIcon(this.getClass().getResource("directions_Image.png"));
+	public ImageIcon instructionsIcon = new ImageIcon(this.getClass().getResource("/resources/directions_Image.png"));
 	
-	public ImageIcon mancala_Stones_Icon_01 = new ImageIcon(this.getClass().getResource("Player_Mancala_Stones_01.png"));
-	public ImageIcon mancala_Stones_Icon_02 = new ImageIcon(this.getClass().getResource("Player_Mancala_Stones_02.png"));
-	public ImageIcon mancala_Stones_Icon_03 = new ImageIcon(this.getClass().getResource("Player_Mancala_Stones_03.png"));
-	public ImageIcon mancala_Stones_Icon_04 = new ImageIcon(this.getClass().getResource("Player_Mancala_Stones_04.png"));
-	public ImageIcon mancala_Stones_Icon_05 = new ImageIcon(this.getClass().getResource("Player_Mancala_Stones_05.png"));
-	public ImageIcon mancala_Stones_Icon_06 = new ImageIcon(this.getClass().getResource("Player_Mancala_Stones_06.png"));
-	public ImageIcon mancala_Stones_Icon_07 = new ImageIcon(this.getClass().getResource("Player_Mancala_Stones_07.png"));
-	public ImageIcon mancala_Stones_Icon_08 = new ImageIcon(this.getClass().getResource("Player_Mancala_Stones_08.png"));
-	public ImageIcon mancala_Stones_Icon_09 = new ImageIcon(this.getClass().getResource("Player_Mancala_Stones_09.png"));
-	public ImageIcon mancala_Stones_Icon_10 = new ImageIcon(this.getClass().getResource("Player_Mancala_Stones_10.png"));
-	public ImageIcon mancala_Stones_Icon_11 = new ImageIcon(this.getClass().getResource("Player_Mancala_Stones_11.png"));
-	public ImageIcon mancala_Stones_Icon_12 = new ImageIcon(this.getClass().getResource("Player_Mancala_Stones_12.png"));
+	public ImageIcon mancala_Stones_Icon_01 = new ImageIcon(this.getClass().getResource("/resources/Player_Mancala_Stones_01.png"));
+	public ImageIcon mancala_Stones_Icon_02 = new ImageIcon(this.getClass().getResource("/resources/Player_Mancala_Stones_02.png"));
+	public ImageIcon mancala_Stones_Icon_03 = new ImageIcon(this.getClass().getResource("/resources/Player_Mancala_Stones_03.png"));
+	public ImageIcon mancala_Stones_Icon_04 = new ImageIcon(this.getClass().getResource("/resources/Player_Mancala_Stones_04.png"));
+	public ImageIcon mancala_Stones_Icon_05 = new ImageIcon(this.getClass().getResource("/resources/Player_Mancala_Stones_05.png"));
+	public ImageIcon mancala_Stones_Icon_06 = new ImageIcon(this.getClass().getResource("/resources/Player_Mancala_Stones_06.png"));
+	public ImageIcon mancala_Stones_Icon_07 = new ImageIcon(this.getClass().getResource("/resources/Player_Mancala_Stones_07.png"));
+	public ImageIcon mancala_Stones_Icon_08 = new ImageIcon(this.getClass().getResource("/resources/Player_Mancala_Stones_08.png"));
+	public ImageIcon mancala_Stones_Icon_09 = new ImageIcon(this.getClass().getResource("/resources/Player_Mancala_Stones_09.png"));
+	public ImageIcon mancala_Stones_Icon_10 = new ImageIcon(this.getClass().getResource("/resources/Player_Mancala_Stones_10.png"));
+	public ImageIcon mancala_Stones_Icon_11 = new ImageIcon(this.getClass().getResource("/resources/Player_Mancala_Stones_11.png"));
+	public ImageIcon mancala_Stones_Icon_12 = new ImageIcon(this.getClass().getResource("/resources/Player_Mancala_Stones_12.png"));
 	
-	public ImageIcon pit_Stones_Icon_01 = new ImageIcon(this.getClass().getResource("Mancala_Stones_01.png"));
-	public ImageIcon pit_Stones_Icon_02 = new ImageIcon(this.getClass().getResource("Mancala_Stones_02.png"));
-	public ImageIcon pit_Stones_Icon_03 = new ImageIcon(this.getClass().getResource("Mancala_Stones_03.png"));
-	public ImageIcon pit_Stones_Icon_04 = new ImageIcon(this.getClass().getResource("Mancala_Stones_04.png"));
-	public ImageIcon pit_Stones_Icon_05 = new ImageIcon(this.getClass().getResource("Mancala_Stones_05.png"));
-	public ImageIcon pit_Stones_Icon_06 = new ImageIcon(this.getClass().getResource("Mancala_Stones_06.png"));
-	public ImageIcon pit_Stones_Icon_07 = new ImageIcon(this.getClass().getResource("Mancala_Stones_07.png"));
-	public ImageIcon pit_Stones_Icon_08 = new ImageIcon(this.getClass().getResource("Mancala_Stones_08.png"));
-	public ImageIcon pit_Stones_Icon_09 = new ImageIcon(this.getClass().getResource("Mancala_Stones_09.png"));
-	public ImageIcon pit_Stones_Icon_10 = new ImageIcon(this.getClass().getResource("Mancala_Stones_10.png"));
-	public ImageIcon pit_Stones_Icon_11 = new ImageIcon(this.getClass().getResource("Mancala_Stones_11.png"));
-	public ImageIcon pit_Stones_Icon_12 = new ImageIcon(this.getClass().getResource("Mancala_Stones_12.png"));
+	public ImageIcon pit_Stones_Icon_01 = new ImageIcon(this.getClass().getResource("/resources/Mancala_Stones_01.png"));
+	public ImageIcon pit_Stones_Icon_02 = new ImageIcon(this.getClass().getResource("/resources/Mancala_Stones_02.png"));
+	public ImageIcon pit_Stones_Icon_03 = new ImageIcon(this.getClass().getResource("/resources/Mancala_Stones_03.png"));
+	public ImageIcon pit_Stones_Icon_04 = new ImageIcon(this.getClass().getResource("/resources/Mancala_Stones_04.png"));
+	public ImageIcon pit_Stones_Icon_05 = new ImageIcon(this.getClass().getResource("/resources/Mancala_Stones_05.png"));
+	public ImageIcon pit_Stones_Icon_06 = new ImageIcon(this.getClass().getResource("/resources/Mancala_Stones_06.png"));
+	public ImageIcon pit_Stones_Icon_07 = new ImageIcon(this.getClass().getResource("/resources/Mancala_Stones_07.png"));
+	public ImageIcon pit_Stones_Icon_08 = new ImageIcon(this.getClass().getResource("/resources/Mancala_Stones_08.png"));
+	public ImageIcon pit_Stones_Icon_09 = new ImageIcon(this.getClass().getResource("/resources/Mancala_Stones_09.png"));
+	public ImageIcon pit_Stones_Icon_10 = new ImageIcon(this.getClass().getResource("/resources/Mancala_Stones_10.png"));
+	public ImageIcon pit_Stones_Icon_11 = new ImageIcon(this.getClass().getResource("/resources/Mancala_Stones_11.png"));
+	public ImageIcon pit_Stones_Icon_12 = new ImageIcon(this.getClass().getResource("/resources/Mancala_Stones_12.png"));
 
 	
 	
