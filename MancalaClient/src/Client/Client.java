@@ -18,7 +18,6 @@ public class Client implements Runnable {
     public static gameBoardPanel gbp;
     public static startPanel panelStart;
     public static menuBar mb;
-    public static resolution res;
     public static instructionsPanel ip;
     public static mancalaClient client;
     private ObjectInputStream fromServer;
@@ -38,9 +37,6 @@ public class Client implements Runnable {
             // ----------------------//
 
 
-            res = new resolution();
-
-
             frame = new JFrame("Mancala");
 
             frame.setLocationRelativeTo(null);
@@ -56,12 +52,9 @@ public class Client implements Runnable {
             //Adds the startPanel to the frame
             frame.getContentPane().add(panelStart);
 
-            // Sets the panel size to the resolution of the monitor
-            //frame.setSize(gd.getDisplayMode().getWidth(),gd.getDisplayMode().getHeight());
-
 
             frame.setVisible(true);
-            res.getRes15();
+            frame.setSize(800, 600);
             frame.setLocationRelativeTo(null);
             frame.setResizable(false);
 
