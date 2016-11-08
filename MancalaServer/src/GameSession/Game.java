@@ -23,8 +23,8 @@ public class Game implements Runnable {
     public void run() {
         boolean keepGameActive = true;
 
-        this.player1.setState(new GameState());
-        this.player2.setState(new GameState());
+        this.player1.setState(new GameState("Player 1", "Player 2"));
+        this.player2.setState(new GameState("Player 2", "Player 1"));
 
         // Start Game
         try {
@@ -37,12 +37,17 @@ public class Game implements Runnable {
 
         while (keepGameActive) {
             try {
-                keepGameActive = this.playersTurn(this.player1, this.player2);
+
+                while(this.player1.isTurn()){
+                    keepGameActive = this.playersTurn(this.player1, this.player2);
+                }
                 if (!keepGameActive) {
                     continue;
                 }
 
-                keepGameActive = this.playersTurn(this.player2, this.player1);
+                while(this.player2.isTurn()) {
+                    keepGameActive = this.playersTurn(this.player2, this.player1);
+                }
                 if (!keepGameActive) {
                     continue;
                 }

@@ -4,6 +4,8 @@ package Communication;
  * Created by mike on 10/22/16.
  */
 public class GameState {
+    private String yourLabel = "You";
+    private String opponentsLabel = "Opponent";
     private int yourStore = 0;
     private int[] yourPits = {4, 4, 4, 4, 4, 4};
     private int opponentsStore = 0;
@@ -13,7 +15,9 @@ public class GameState {
     private boolean gameOver = false;
     private boolean opponentLeft = false;
 
-    public GameState() {
+    public GameState(String yourLabel, String opponentsLabel) {
+        this.yourLabel = yourLabel;
+        this.opponentsLabel = opponentsLabel;
     }
 
     public GameState(int yourStore, int[] yourPits, int opponentsStore, int[] opponentsPits) {
@@ -36,6 +40,30 @@ public class GameState {
     public GameState setYourTurn(boolean yourTurn) {
         this.yourTurn = yourTurn;
         return this;
+    }
+
+    public void setYourStore(int yourStore) {
+        this.yourStore = yourStore;
+    }
+
+    public void setYourPits(int[] yourPits) {
+        this.yourPits = yourPits;
+    }
+
+    public void setOpponentsPits(int[] opponentsPits) {
+        this.opponentsPits = opponentsPits;
+    }
+
+    public void setOpponentsStore(int opponentsStore) {
+        this.opponentsStore = opponentsStore;
+    }
+
+    public String getYourLabel() {
+        return this.yourLabel;
+    }
+
+    public String getOpponentsLabel() {
+        return this.opponentsLabel;
     }
 
     public int getYourStore() {
@@ -74,4 +102,5 @@ public class GameState {
     public GameState generateOpponentsState() {
         return new GameState(this.opponentsStore, this.opponentsPits, this.yourStore, this.yourPits);
     }
+
 }
