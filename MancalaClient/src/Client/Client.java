@@ -1,15 +1,18 @@
 package Client;
 
+import Communication.GameEvent;
+import Communication.GameState;
 import GUI.*;
 
 import javax.swing.*;
-import java.io.IOException;
+import java.io.*;
 import java.net.MalformedURLException;
+import java.net.Socket;
 
 /**
  * Created by mike on 11/8/16.
  */
-public class Client {
+public class Client implements Runnable {
 
     public static JFrame frame;
     public static gameBoardPanel gbp;
@@ -18,6 +21,8 @@ public class Client {
     public static resolution res;
     public static instructionsPanel ip;
     public static mancalaClient client;
+    private ObjectInputStream fromServer;
+    private ObjectOutputStream toServer;
 
     public Client() {
         try {
@@ -26,21 +31,10 @@ public class Client {
             // Needed to detect the screen resolution sizes the window to your monitor resolution.
 
             // Contains all the JFrame attributes.
-            mb = new menuBar();
-            panelStart = new startPanel();
-            gbp = new gameBoardPanel();
-            ip = new instructionsPanel();
-
-
-            // Client stuff
-            client = new mancalaClient();
-            client.isStandAlone = true;
-//
-//            if (args.length == 1) {
-//                client.host = args[0];
-//            }
-
-            client.init();
+            mb = new menuBar(this);
+            panelStart = new startPanel(this);
+            gbp = new gameBoardPanel(this);
+            ip = new instructionsPanel(this);
             // ----------------------//
 
 
@@ -76,5 +70,56 @@ public class Client {
         }
         // -----------------------------------------------------------------//
 
+    }
+
+    public JFrame getFrame() {
+        return this.frame;
+    }
+
+
+    public void connectToServer() {
+        try {
+            Socket socket = new Socket("localhost", 8000);
+            System.out.println("connected");
+
+            this.toServer = new ObjectOutputStream(socket.getOutputStream());
+            this.fromServer = new ObjectInputStream(socket.getInputStream());
+
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread thread = new Thread(this);
+        thread.start();
+    }
+
+    public void run() {
+        boolean keepPlaying = true;
+        while (keepPlaying) {
+            // listen for server info
+            try {
+                GameState gameState = (GameState) this.fromServer.readObject();
+
+                if (gameState.isOpponentLeft()) {
+
+                }
+
+                if (gameState.isGameOver()) {
+
+                }
+                
+                this.updateState(gameState);
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+
+    private void updateState(GameState gameState) {
     }
 }

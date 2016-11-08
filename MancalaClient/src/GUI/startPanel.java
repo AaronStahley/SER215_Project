@@ -2,6 +2,9 @@ package GUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.net.Socket;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -20,9 +23,10 @@ public class startPanel extends JPanel {
     public static JLabel startBGLabel;
     public static JButton instructionsButton;
     public static JButton exitButton;
+    private final Client client;
 
-    public startPanel() {
-
+    public startPanel(Client c) {
+        this.client = c;
         setLayout(null);
 
 
@@ -61,9 +65,11 @@ public class startPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
 
                 // Removes the startFrame and replaces it to the Game board.
-                Client.frame.getContentPane().removeAll();
-                Client.frame.getContentPane().add(Client.gbp);
-                Client.frame.revalidate(); // refreshes the JFrame.
+
+                client.connectToServer();
+                client.frame.getContentPane().removeAll();
+                client.frame.getContentPane().add(Client.gbp);
+                client.frame.revalidate(); // refreshes the JFrame.
             }
         });
 
@@ -71,9 +77,9 @@ public class startPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
 
                 // Removes the startFrame and replaces it to the instructionsPanel.
-                Client.frame.getContentPane().removeAll();
-                Client.frame.getContentPane().add(Client.ip);
-                Client.frame.revalidate(); // refreshes the JFrame.
+                client.frame.getContentPane().removeAll();
+                client.frame.getContentPane().add(Client.ip);
+                client.frame.revalidate(); // refreshes the JFrame.
             }
         });
 

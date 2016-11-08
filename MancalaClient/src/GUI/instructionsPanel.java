@@ -16,9 +16,10 @@ public class instructionsPanel extends JPanel {
     public static JButton StartButton;
 
     public static JScrollPane instructionsScrollPane;
+    protected Client client;
 
-    public instructionsPanel() {
-
+    public instructionsPanel(Client c) {
+        this.client = c;
         setLayout(null);
 
         StartButton = new JButton("Start Game");
@@ -33,9 +34,9 @@ public class instructionsPanel extends JPanel {
 
         StartButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Client.frame.getContentPane().removeAll();
-                Client.frame.getContentPane().add(Client.gbp);
-                Client.frame.revalidate(); // refreshes the JFrame.
+                client.frame.getContentPane().removeAll();
+                client.frame.getContentPane().add(Client.gbp);
+                client.frame.revalidate(); // refreshes the JFrame.
 
             }
         });

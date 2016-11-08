@@ -23,9 +23,6 @@ public class Game implements Runnable {
     public void run() {
         boolean keepGameActive = true;
 
-        this.player1.setState(new GameState("Player 1", "Player 2"));
-        this.player2.setState(new GameState("Player 2", "Player 1"));
-
         // Start Game
         try {
             this.player1.setTurn(true);

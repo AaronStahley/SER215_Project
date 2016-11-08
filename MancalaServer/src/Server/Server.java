@@ -1,5 +1,6 @@
 package Server;
 
+import Communication.GameState;
 import GameSession.Game;
 import GameSession.Player;
 import Utilites.ServerSocket;
@@ -25,9 +26,13 @@ public class Server {
 
                 // Connect to player 1
                 Player player1 = serverSocket.acceptPlayer();
+                player1.setState(new GameState("Player 1", "Player 2"));
+                player1.sendState();
 
                 // Connect to player 2
                 Player player2 = serverSocket.acceptPlayer();
+                player2.setState(new GameState("Player 2", "Player 1"));
+                player2.sendState();
 
 
                 // Create a new thread for this session of two players

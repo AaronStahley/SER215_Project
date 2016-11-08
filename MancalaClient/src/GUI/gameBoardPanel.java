@@ -1,5 +1,7 @@
 package GUI;
 
+import Client.Client;
+
 import java.awt.Color;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
@@ -12,6 +14,7 @@ import javax.swing.JPanel;
 
 public class gameBoardPanel extends JPanel {
 
+    private final Client client;
     GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 
 
@@ -31,8 +34,8 @@ public class gameBoardPanel extends JPanel {
     public static JLabel playerTurn;
 
 
-    public gameBoardPanel() throws MalformedURLException, IOException {
-
+    public gameBoardPanel(Client client) throws MalformedURLException, IOException {
+        this.client = client;
         setLayout(null);
 
         playerTurn = new JLabel("Player Turn");

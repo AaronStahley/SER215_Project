@@ -13,18 +13,6 @@ public class mancalaClient extends Socket
     public static int PLAYER2 = 1;
     public static int PLAYER1_WON = 1;
     public static int PLAYER2_WON = 2;
-    public static int CONTINUE = 4;
-
-
-    //indicates whether or not it is the players turn
-
-    private boolean myTurn = false;
-
-    private int[] piles = new int[12];
-
-    private JLabel jlblTitle = new JLabel();
-
-    private JLabel jlblStatus = new JLabel();
 
     private int pileSelected;
 
@@ -47,16 +35,10 @@ public class mancalaClient extends Socket
 
     private void connectToServer() {
         try {
-            Socket socket = null;
-            if (isStandAlone)
-                socket = new Socket(host, 8000);
+            Socket socket = new Socket(host, 8000);
             System.out.println("connected");
 
-            //else
-            //	socket = new Socket(getCodeBase().getHost(), 8000);
-
             fromServer = new DataInputStream(socket.getInputStream());
-
             toServer = new DataOutputStream(socket.getOutputStream());
         } catch (Exception ex) {
             System.err.println(ex);

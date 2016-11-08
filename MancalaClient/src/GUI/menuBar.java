@@ -1,5 +1,7 @@
 package GUI;
 
+import Client.Client;
+
 import java.awt.BorderLayout;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
@@ -13,6 +15,7 @@ import javax.swing.JPanel;
 
 public class menuBar extends JPanel {
 
+    private final Client client;
     GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 
     static JMenuBar menuBar;
@@ -25,6 +28,10 @@ public class menuBar extends JPanel {
     private resolution res = new resolution();
 
     private JMenuItem[] resolutionsJMI = new JMenuItem[16];// creates an array of JMenuItems
+
+    public menuBar(Client client) {
+        this.client = client;
+    }
 
 
     public JMenuBar createMenuBar() {
