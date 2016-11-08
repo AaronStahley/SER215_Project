@@ -3,9 +3,11 @@ package GUI;
 import java.awt.Color;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.Image;
 import java.io.IOException;
 import java.net.MalformedURLException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -13,6 +15,8 @@ import javax.swing.JPanel;
 public class gameBoardPanel extends JPanel {
 
     GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+
+    private ImageIcon game_Board_Icon = new ImageIcon(this.getClass().getResource("/resources/mancala_GB_01.png"));
 
 
     public static JLabel bgLabel;
@@ -30,10 +34,51 @@ public class gameBoardPanel extends JPanel {
 
     public static JLabel playerTurn;
 
+    
+    private ImageIcon player_01_turn = new ImageIcon(this.getClass().getResource("/resources/Player_01_Turn.png"));
+    private ImageIcon player_02_turn = new ImageIcon(this.getClass().getResource("/resources/Player_02_Turn.png"));
+    
+    
+    private ImageIcon stones_04_Image = new ImageIcon(this.getClass().getResource("/resources/Mancala_Stones_04.png"));
+
+    public ImageIcon mancala_Stones_Icon_01 = new ImageIcon(this.getClass().getResource("/resources/Player_Mancala_Stones_01.png"));
+    public ImageIcon mancala_Stones_Icon_02 = new ImageIcon(this.getClass().getResource("/resources/Player_Mancala_Stones_02.png"));
+    public ImageIcon mancala_Stones_Icon_03 = new ImageIcon(this.getClass().getResource("/resources/Player_Mancala_Stones_03.png"));
+    public ImageIcon mancala_Stones_Icon_04 = new ImageIcon(this.getClass().getResource("/resources/Player_Mancala_Stones_04.png"));
+    public ImageIcon mancala_Stones_Icon_05 = new ImageIcon(this.getClass().getResource("/resources/Player_Mancala_Stones_05.png"));
+    public ImageIcon mancala_Stones_Icon_06 = new ImageIcon(this.getClass().getResource("/resources/Player_Mancala_Stones_06.png"));
+    public ImageIcon mancala_Stones_Icon_07 = new ImageIcon(this.getClass().getResource("/resources/Player_Mancala_Stones_07.png"));
+    public ImageIcon mancala_Stones_Icon_08 = new ImageIcon(this.getClass().getResource("/resources/Player_Mancala_Stones_08.png"));
+    public ImageIcon mancala_Stones_Icon_09 = new ImageIcon(this.getClass().getResource("/resources/Player_Mancala_Stones_09.png"));
+    public ImageIcon mancala_Stones_Icon_10 = new ImageIcon(this.getClass().getResource("/resources/Player_Mancala_Stones_10.png"));
+    public ImageIcon mancala_Stones_Icon_11 = new ImageIcon(this.getClass().getResource("/resources/Player_Mancala_Stones_11.png"));
+    public ImageIcon mancala_Stones_Icon_12 = new ImageIcon(this.getClass().getResource("/resources/Player_Mancala_Stones_12.png"));
+
+    public ImageIcon pit_Stones_Icon_01 = new ImageIcon(this.getClass().getResource("/resources/Mancala_Stones_01.png"));
+    public ImageIcon pit_Stones_Icon_02 = new ImageIcon(this.getClass().getResource("/resources/Mancala_Stones_02.png"));
+    public ImageIcon pit_Stones_Icon_03 = new ImageIcon(this.getClass().getResource("/resources/Mancala_Stones_03.png"));
+    public ImageIcon pit_Stones_Icon_04 = new ImageIcon(this.getClass().getResource("/resources/Mancala_Stones_04.png"));
+    public ImageIcon pit_Stones_Icon_05 = new ImageIcon(this.getClass().getResource("/resources/Mancala_Stones_05.png"));
+    public ImageIcon pit_Stones_Icon_06 = new ImageIcon(this.getClass().getResource("/resources/Mancala_Stones_06.png"));
+    public ImageIcon pit_Stones_Icon_07 = new ImageIcon(this.getClass().getResource("/resources/Mancala_Stones_07.png"));
+    public ImageIcon pit_Stones_Icon_08 = new ImageIcon(this.getClass().getResource("/resources/Mancala_Stones_08.png"));
+    public ImageIcon pit_Stones_Icon_09 = new ImageIcon(this.getClass().getResource("/resources/Mancala_Stones_09.png"));
+    public ImageIcon pit_Stones_Icon_10 = new ImageIcon(this.getClass().getResource("/resources/Mancala_Stones_10.png"));
+    public ImageIcon pit_Stones_Icon_11 = new ImageIcon(this.getClass().getResource("/resources/Mancala_Stones_11.png"));
+    public ImageIcon pit_Stones_Icon_12 = new ImageIcon(this.getClass().getResource("/resources/Mancala_Stones_12.png"));
+
 
     public gameBoardPanel() throws MalformedURLException, IOException {
 
         setLayout(null);
+        
+        Image game_Board_Panel_Scaled = game_Board_Icon.getImage().getScaledInstance(800, 600, Image.SCALE_DEFAULT);
+        ImageIcon new_game_Board_Icon = new ImageIcon(game_Board_Panel_Scaled);
+        
+       
+        Image stones_04_Scaled = stones_04_Image.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+        ImageIcon stones_04_Icon = new ImageIcon(stones_04_Scaled);
+        
 
         playerTurn = new JLabel("Player Turn");
 
@@ -107,9 +152,60 @@ public class gameBoardPanel extends JPanel {
 
         bgLabel = new JLabel();
         add(bgLabel);
+        
+        
+        gameBoardPanel.playerTurn.setBounds(150, 30, 500, 75);
+        gameBoardPanel.playerTurn.setIcon(player_01_turn);
+
+        gameBoardPanel.mancalaLeft.setBounds(112, 200, 50, 200);
+        gameBoardPanel.mancalaRight.setBounds(640, 200, 50, 200);
+
+        gameBoardPanel.mancalaLeftCountLabel.setBounds(158, 175, 15, 15);
+
+        gameBoardPanel.mancalaRightCountLabel.setBounds(632, 410, 15, 15);
+
+        for (int i = 0; i < gameBoardPanel.pitButton.length; i++) {
+           pitButton[i].setIcon(stones_04_Icon);
+        }
+
+        for (int i = 0; i < gameBoardPanel.pitLabel.length; i++) {
+          pitLabel[i].setIcon(stones_04_Icon);
+        }
+        
+        gameBoardPanel.bgLabel.setBounds(0, 0, 800, 600);
+        gameBoardPanel.bgLabel.setIcon(new_game_Board_Icon);
+
+
+        pitButton[0].setBounds(179, 355, 50, 50);
+        pitButton[1].setBounds(257, 355, 50, 50);
+        gameBoardPanel.pitButton[2].setBounds(335, 355, 50, 50);
+        gameBoardPanel.pitButton[3].setBounds(413, 355, 50, 50);
+        gameBoardPanel.pitButton[4].setBounds(491, 355, 50, 50);
+        gameBoardPanel.pitButton[5].setBounds(569, 355, 50, 50);
+
+        gameBoardPanel.pitLabel[0].setBounds(179, 192, 50, 50);
+        gameBoardPanel.pitLabel[1].setBounds(257, 192, 50, 50);
+        gameBoardPanel.pitLabel[2].setBounds(335, 192, 50, 50);
+        gameBoardPanel.pitLabel[3].setBounds(413, 192, 50, 50);
+        gameBoardPanel.pitLabel[4].setBounds(491, 192, 50, 50);
+        gameBoardPanel.pitLabel[5].setBounds(569, 192, 50, 50);
+
+        gameBoardPanel.pitNumberLabel[0].setBounds(200, 320, 15, 15);
+        gameBoardPanel.pitNumberLabel[1].setBounds(275, 320, 10, 10);
+        gameBoardPanel.pitNumberLabel[2].setBounds(355, 320, 10, 10);
+        gameBoardPanel.pitNumberLabel[3].setBounds(435, 320, 10, 10);
+        gameBoardPanel.pitNumberLabel[4].setBounds(515, 320, 10, 10);
+        gameBoardPanel.pitNumberLabel[5].setBounds(590, 320, 10, 10);
+        gameBoardPanel.pitNumberLabel[6].setBounds(200, 270, 10, 10);
+        gameBoardPanel.pitNumberLabel[7].setBounds(275, 270, 10, 10);
+        gameBoardPanel.pitNumberLabel[8].setBounds(355, 270, 10, 10);
+        gameBoardPanel.pitNumberLabel[9].setBounds(435, 270, 10, 10);
+        gameBoardPanel.pitNumberLabel[10].setBounds(515, 270, 10, 10);
+        gameBoardPanel.pitNumberLabel[11].setBounds(590, 270, 10, 10);
 
 
     }
+    
 
 
 }
