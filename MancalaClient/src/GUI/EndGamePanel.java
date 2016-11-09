@@ -4,7 +4,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class endGamePanel extends JPanel {
+public class EndGamePanel extends JPanel {
 
     public static JLabel backGroundLabel;
     public static JLabel winLabel;
@@ -12,7 +12,7 @@ public class endGamePanel extends JPanel {
 
     public static JButton playAgainButton;
 
-    public endGamePanel() {
+    public EndGamePanel() {
 
         winLabel = new JLabel();
         add(winLabel);

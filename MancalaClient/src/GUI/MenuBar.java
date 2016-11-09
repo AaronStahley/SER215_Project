@@ -1,10 +1,8 @@
 package GUI;
 
-import Client.Client;
+import Client.Controller;
 
 import java.awt.BorderLayout;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,18 +11,18 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
-public class menuBar extends JPanel {
+public class MenuBar extends JPanel {
 
-    private final Client client;
-    GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+    private final Controller controller;
 
     static JMenuBar menuBar;
 
     private JMenu fileJM;
     private JMenuItem exitJMI;
 
-    public menuBar(Client client) {
-        this.client = client;
+    public MenuBar(Controller controller) {
+        this.controller = controller;
+//        this.setLayout(null);
     }
 
     public JMenuBar createMenuBar() {
@@ -33,7 +31,7 @@ public class menuBar extends JPanel {
 
         // --------------- Menu Bar Attributes -----------//
         menuBar = new JMenuBar();
-        //menuBar.setBounds(0, 0,gd.getDisplayMode().getWidth(), 25);
+        //MenuBar.setBounds(0, 0,gd.getDisplayMode().getWidth(), 25);
         menuBar.setVisible(true);
         add(menuBar);
 
@@ -48,22 +46,14 @@ public class menuBar extends JPanel {
         // Exit button in the file menu bar button.
         exitJMI = new JMenuItem(" Exit ");
         fileJM.add(exitJMI);
-        event e = new event();
-        exitJMI.addActionListener(e);
+        exitJMI.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
 
         // ---------------------------------------//
-
-    
-		return null;
-    
-
-    }
-
-    // Implements the actionListner for buttons and menu bar items.
-    public class event implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            System.exit(0);
-        }
+        return null;
     }
 
 }

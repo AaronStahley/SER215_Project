@@ -5,6 +5,7 @@ import Communication.GameState;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.Arrays;
 
 /**
  * Created by mike on 10/22/16.
@@ -21,6 +22,10 @@ public class Player extends Socket {
 
     public GameState waitForMove() throws IOException, ClassNotFoundException {
         GameEvent playerAction = (GameEvent) this.inputStream.readObject();
+
+        System.out.println(" - New Event:");
+        System.out.print("  * Button Clicked: ");
+        System.out.println(playerAction.buttonPressed);
 
 
         // need to read input and process it and then update the this.state
@@ -118,6 +123,7 @@ public class Player extends Socket {
     }
 
     public Player sendState() throws IOException {
+        this.outputStream.reset();
         this.outputStream.writeObject(this.state);
         return this;
     }

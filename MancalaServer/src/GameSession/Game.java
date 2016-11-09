@@ -1,7 +1,7 @@
 package GameSession;
 
 import Communication.GameState;
-import Server.Server;
+import Server.Controller;
 
 import java.io.IOException;
 
@@ -23,6 +23,8 @@ public class Game implements Runnable {
     public void run() {
         boolean keepGameActive = true;
 
+        System.out.println("-- Starting Game:");
+
         // Start Game
         try {
             this.player1.setTurn(true);
@@ -35,14 +37,16 @@ public class Game implements Runnable {
         while (keepGameActive) {
             try {
 
-                while(this.player1.isTurn()){
+                while (this.player1.isTurn()) {
+                    System.out.println(" -- Waiting for player 1 turn");
                     keepGameActive = this.playersTurn(this.player1, this.player2);
                 }
                 if (!keepGameActive) {
                     continue;
                 }
 
-                while(this.player2.isTurn()) {
+                while (this.player2.isTurn()) {
+                    System.out.println(" -- Waiting for player 2 turn");
                     keepGameActive = this.playersTurn(this.player2, this.player1);
                 }
                 if (!keepGameActive) {
@@ -54,6 +58,9 @@ public class Game implements Runnable {
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                System.out.println(e.getCause());
                 e.printStackTrace();
             }
         }
@@ -71,7 +78,7 @@ public class Game implements Runnable {
             e.printStackTrace();
         }
 
-        Server.clearSession(this.gameId);
+        Controller.clearSession(this.gameId);
     }
 
 
@@ -80,11 +87,10 @@ public class Game implements Runnable {
             if (opponent.isConnected()) {
                 GameState opponentsState = player.waitForMove();
 
-                player.setTurn(false).sendState();
+                player.sendState();
 
                 if (opponent.isConnected()) {
                     opponent.setState(opponentsState)
-                            .setTurn(true)
                             .sendState();
                 }
             } else {

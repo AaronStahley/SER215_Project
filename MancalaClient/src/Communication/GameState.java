@@ -1,9 +1,11 @@
 package Communication;
 
+import java.io.Serializable;
+
 /**
  * Created by mike on 10/22/16.
  */
-public class GameState {
+public class GameState implements Serializable {
     private String yourLabel = "You";
     private String opponentsLabel = "Opponent";
     private int yourStore = 0;

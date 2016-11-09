@@ -1,25 +1,21 @@
 package GUI;
 
-import java.awt.Image;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.net.Socket;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import Client.Client;
+import Client.Controller;
 
 // Contains all the content for the start Screen. 
 
 
+public class StartPanel extends JPanel {
 
-public class startPanel extends JPanel {
-	
     private ImageIcon title_Panel_Icon = new ImageIcon(this.getClass().getResource("/resources/Title_Panel_BG_01.png"));
     private ImageIcon start_Icon = new ImageIcon(this.getClass().getResource("/resources/Start_Button.png"));
     private ImageIcon exit_Icon = new ImageIcon(this.getClass().getResource("/resources/Exit_Button.png"));
@@ -36,12 +32,12 @@ public class startPanel extends JPanel {
     public static JLabel startBGLabel;
     public static JButton instructionsButton;
     public static JButton exitButton;
-    private final Client client;
+    private final Controller controller;
 
-    public startPanel(Client c) {
-        this.client = c;
-        setLayout(null);
-     
+    public StartPanel(Controller c) {
+        final StartPanel panel = this;
+        this.controller = c;
+        this.setLayout(null);
 
         startButton = new JButton("Start");
         startButton.setOpaque(true);
@@ -71,15 +67,12 @@ public class startPanel extends JPanel {
         exitButton.setIcon(exit_Icon);
         exitButton.setRolloverIcon(exit_Rollover_Icon);
         add(exitButton);
-        
-        
+
+
         Image title_Panel_Scaled = title_Panel_Icon.getImage().getScaledInstance(800, 600, Image.SCALE_DEFAULT);
         ImageIcon title_Panel_Icon = new ImageIcon(title_Panel_Scaled);
 
-        startBGLabel.setBounds(0, 0, 800, 600);
-        startBGLabel.setIcon(title_Panel_Icon);
 
-        
         exitButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
@@ -88,29 +81,30 @@ public class startPanel extends JPanel {
 
 
         startBGLabel = new JLabel();
+        startBGLabel.setBounds(0, 0, 800, 600);
+        startBGLabel.setIcon(title_Panel_Icon);
         add(startBGLabel);
 
 
         //This provides the action for the start button.
         startButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
                 // Removes the startFrame and replaces it to the Game board.
-
-                client.connectToServer();
-                client.frame.getContentPane().removeAll();
-                client.frame.getContentPane().add(Client.gbp);
-                client.frame.revalidate(); // refreshes the JFrame.
+                controller.connectToServer();
+                controller.getFrame().getContentPane().removeAll();
+                controller.getFrame().getContentPane().add(controller.getGbp());
+                controller.getFrame().revalidate(); // refreshes the JFrame.
+                controller.getFrame().repaint();
             }
         });
 
         instructionsButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
-                // Removes the startFrame and replaces it to the instructionsPanel.
-                client.frame.getContentPane().removeAll();
-                client.frame.getContentPane().add(Client.ip);
-                client.frame.revalidate(); // refreshes the JFrame.
+                // Removes the startFrame and replaces it to the InstructionsPanel.
+                controller.getFrame().getContentPane().removeAll();
+                controller.getFrame().getContentPane().add(controller.getIp());
+                controller.getFrame().repaint();
+//                controller.getFrame().revalidate(); // refreshes the JFrame.
             }
         });
 
