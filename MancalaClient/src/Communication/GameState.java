@@ -9,20 +9,25 @@ public class GameState implements Serializable {
     private String yourLabel = "You";
     private String opponentsLabel = "Opponent";
     private int yourStore = 0;
-    private int[] yourPits = {4, 4, 4, 4, 4, 4};
+//    private int[] yourPits = {4, 4, 4, 4, 4, 4};
+    private int[] yourPits = {1, 0, 0, 0, 0, 0};
     private int opponentsStore = 0;
+//    private int[] opponentsPits = {4, 4, 4, 4, 4, 4};
     private int[] opponentsPits = {4, 4, 4, 4, 4, 4};
     private boolean youWin = false;
     private boolean yourTurn = false;
     private boolean gameOver = false;
     private boolean opponentLeft = false;
+    private boolean isTie = false;
+    private boolean waitingForOpponent = true;
 
     public GameState(String yourLabel, String opponentsLabel) {
         this.yourLabel = yourLabel;
         this.opponentsLabel = opponentsLabel;
     }
 
-    public GameState(int yourStore, int[] yourPits, int opponentsStore, int[] opponentsPits) {
+    public GameState(String yourLabel, int yourStore, int[] yourPits, String opponentsLabel, int opponentsStore, int[] opponentsPits) {
+        this(yourLabel, opponentsLabel);
         this.yourStore = yourStore;
         this.yourPits = yourPits;
         this.opponentsStore = opponentsStore;
@@ -34,8 +39,14 @@ public class GameState implements Serializable {
         return this;
     }
 
-    public GameState setGameOver(boolean gameOver) {
-        this.gameOver = gameOver;
+    public GameState setIsTie(boolean isTie) {
+        this.isTie = isTie;
+        return this;
+    }
+
+    public GameState setGameOver() {
+        this.setYourTurn(false);
+        this.gameOver = true;
         return this;
     }
 
@@ -44,20 +55,34 @@ public class GameState implements Serializable {
         return this;
     }
 
-    public void setYourStore(int yourStore) {
+    public GameState setYouWin(boolean yourTurn) {
+        this.youWin = yourTurn;
+        return this;
+    }
+
+    public GameState setYourStore(int yourStore) {
         this.yourStore = yourStore;
+        return this;
     }
 
-    public void setYourPits(int[] yourPits) {
+    public GameState setYourPits(int[] yourPits) {
         this.yourPits = yourPits;
+        return this;
     }
 
-    public void setOpponentsPits(int[] opponentsPits) {
+    public GameState setOpponentsPits(int[] opponentsPits) {
         this.opponentsPits = opponentsPits;
+        return this;
     }
 
-    public void setOpponentsStore(int opponentsStore) {
+    public GameState setOpponentsStore(int opponentsStore) {
         this.opponentsStore = opponentsStore;
+        return this;
+    }
+
+    public GameState setWaitingForOpponent(boolean waitingForOpponent) {
+        this.waitingForOpponent = waitingForOpponent;
+        return this;
     }
 
     public String getYourLabel() {
@@ -69,40 +94,46 @@ public class GameState implements Serializable {
     }
 
     public int getYourStore() {
-        return yourStore;
+        return this.yourStore;
     }
 
     public int[] getYourPits() {
-        return yourPits;
+        return this.yourPits;
     }
 
     public int getOpponentsStore() {
-        return opponentsStore;
+        return this.opponentsStore;
     }
 
     public int[] getOpponentsPits() {
-        return opponentsPits;
+        return this.opponentsPits;
     }
 
     public boolean isYouWin() {
-        return youWin;
+        return this.youWin;
     }
 
     public boolean isYourTurn() {
-        return yourTurn;
+        return this.yourTurn;
     }
 
     public boolean isGameOver() {
-        return gameOver;
+        return this.gameOver;
+    }
+
+    public boolean isTie() {
+        return this.isTie;
     }
 
     public boolean isOpponentLeft() {
-        return opponentLeft;
+        return this.opponentLeft;
     }
+
+    public boolean isWaitingForOpponent() {  return this.waitingForOpponent;}
 
 
     public GameState generateOpponentsState() {
-        return new GameState(this.opponentsStore, this.opponentsPits, this.yourStore, this.yourPits);
+        return new GameState(this.getOpponentsLabel(), this.opponentsStore, this.opponentsPits, this.getYourLabel(), this.yourStore, this.yourPits);
     }
 
 }

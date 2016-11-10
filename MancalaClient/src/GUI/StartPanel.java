@@ -91,19 +91,14 @@ public class StartPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 // Removes the startFrame and replaces it to the Game board.
                 controller.connectToServer();
-                controller.getFrame().getContentPane().removeAll();
-                controller.getFrame().getContentPane().add(controller.getGbp());
-                controller.getFrame().revalidate(); // refreshes the JFrame.
-                controller.getFrame().repaint();
+                controller.showGameBoard();
             }
         });
 
         instructionsButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Removes the startFrame and replaces it to the InstructionsPanel.
-                controller.getFrame().getContentPane().removeAll();
-                controller.getFrame().getContentPane().add(controller.getIp());
-                controller.getFrame().revalidate(); // refreshes the JFrame.
+                controller.showInstructionScreen();
             }
         });
 

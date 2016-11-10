@@ -14,23 +14,21 @@ import Client.Controller;
 
 
 public class InstructionsPanel extends JPanel {
-	
+
     private ImageIcon instructionsIcon = new ImageIcon(this.getClass().getResource("/resources/directions_Image.png"));
-
-    private JButton StartButton;
-
     private JScrollPane instructionsScrollPane;
-    
+
     private JLabel instructionsLabel;
     protected Controller controller;
 
     public InstructionsPanel(Controller c) {
         this.controller = c;
         setLayout(null);
-        
-        StartButton = new JButton("Start Game");
-        StartButton.setBounds(335, 542, 100, 25);
-        add(StartButton);
+
+        // note: changed to be back button to keep the stating of a game in one spot, the start screen.
+        JButton BackButton = new JButton("Back");
+        BackButton.setBounds(335, 542, 100, 25);
+        add(BackButton);
 
         instructionsScrollPane = new JScrollPane(instructionsLabel = new JLabel(instructionsIcon));
         instructionsScrollPane.setBounds(0, 0, 795, 540);
@@ -38,15 +36,12 @@ public class InstructionsPanel extends JPanel {
         instructionsScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         instructionsScrollPane.setMaximumSize(getSize());
         add(instructionsScrollPane);
-        
+
         instructionsLabel.setIcon(instructionsIcon);
 
-        StartButton.addActionListener(new ActionListener() {
+        BackButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                controller.getFrame().getContentPane().removeAll();
-                controller.getFrame().getContentPane().add(controller.getGbp());
-                controller.getFrame().revalidate(); // refreshes the JFrame.
-
+                controller.showStartScreen();
             }
         });
 

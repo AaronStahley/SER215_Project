@@ -83,11 +83,10 @@ public class Player extends Socket {
         if (yourPitsSum == 0) {
             // game over
             gameOver = true;
-            int opponentsPitsSum = 0;
-            for (int pitCount : opponentsPits) {
-                opponentsPitsSum += pitCount;
+            for (int i = 0; i < opponentsPits.length; i++) {
+                opponentsStore += opponentsPits[i];
+                opponentsPits[i] = 0;
             }
-            opponentsStore += opponentsPitsSum;
         }
 
 
@@ -105,8 +104,17 @@ public class Player extends Socket {
         }
 
         if (gameOver) {
-            this.state.setYourTurn(false).setGameOver(true);
-            opponentsState.setYourTurn(false).setGameOver(true);
+            if (this.state.getYourStore() > this.state.getOpponentsStore()) {
+                this.state.setYouWin(true);
+            } else if (this.state.getYourStore() < this.state.getOpponentsStore()) {
+                opponentsState.setYouWin(true);
+            } else {
+                this.state.setIsTie(true);
+                opponentsState.setIsTie(true);
+            }
+
+            this.state.setGameOver();
+            this.state.setGameOver();
         }
 
         return opponentsState;
@@ -129,24 +137,13 @@ public class Player extends Socket {
     }
 
     public Player sendOpponentLeftState() throws IOException {
-        this.setGameOver(true)
-                .setOpponentLeft(true)
-                .sendState();
+        this.getState().setGameOver().setOpponentLeft(true);
+        this.sendState();
         return this;
     }
 
     public Player setTurn(boolean turn) {
         this.getState().setYourTurn(turn);
-        return this;
-    }
-
-    public Player setOpponentLeft(boolean opponentLeft) {
-        this.getState().setOpponentLeft(opponentLeft);
-        return this;
-    }
-
-    public Player setGameOver(boolean gameOver) {
-        this.getState().setGameOver(gameOver);
         return this;
     }
 

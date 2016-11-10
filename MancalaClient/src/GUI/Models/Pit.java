@@ -15,6 +15,7 @@ import java.io.IOException;
 public class Pit extends JPanel {
 
     private static ImageIcon[] stoneImages = {
+            new ImageIcon(Pit.class.getResource("/resources/Mancala_Stones_00.png")),
             new ImageIcon(Pit.class.getResource("/resources/Mancala_Stones_01.png")),
             new ImageIcon(Pit.class.getResource("/resources/Mancala_Stones_02.png")),
             new ImageIcon(Pit.class.getResource("/resources/Mancala_Stones_03.png")),
@@ -72,10 +73,10 @@ public class Pit extends JPanel {
 
         if (labelBellow) {
             this.button.setBounds(0, 0, 80, 80);
-            this.label.setBounds(33, 85, 15, 15);
+            this.label.setBounds(30, 85, 20, 15);
         } else {
             this.button.setBounds(0, 23, 80, 80);
-            this.label.setBounds(33, 3, 15, 15);
+            this.label.setBounds(30, 3, 20, 15);
         }
 
 
@@ -90,11 +91,9 @@ public class Pit extends JPanel {
         ImageIcon img;
 
         if (num > stoneImages.length) {
-            img = stoneImages[11];
-        } else if (num == 0) {
-            img = null;
+            img = stoneImages[stoneImages.length-1];
         } else {
-            img = stoneImages[num - 1];
+            img = stoneImages[num];
         }
 
         if (img == null) {

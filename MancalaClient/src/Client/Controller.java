@@ -21,7 +21,8 @@ public class Controller implements Runnable {
     private InstructionsPanel ip;
     private ObjectInputStream fromServer;
     private ObjectOutputStream toServer;
-    private EndGamePanel egp; 
+    private EndGamePanel egp;
+    private boolean reconnect = false;
 
     public Controller() {
         try {
@@ -45,7 +46,7 @@ public class Controller implements Runnable {
             this.gbp = new GameBoardPanel(this);
             this.ip = new InstructionsPanel(this);
             this.egp = new EndGamePanel(this);
-            
+
             // ----------------------//
 
             //Adds the StartPanel to the frame
@@ -57,32 +58,35 @@ public class Controller implements Runnable {
             e.printStackTrace();
         }
         // -----------------------------------------------------------------//
-
     }
 
     public JFrame getFrame() {
         return this.frame;
     }
 
-    public GameBoardPanel getGbp() {
-        return this.gbp;
+
+    private void showPanel(JPanel panel) {
+        this.getFrame().getContentPane().removeAll();
+        this.getFrame().getContentPane().add(panel);
+        this.getFrame().revalidate(); // refreshes the JFrame.
+        this.getFrame().repaint();
     }
 
-    public StartPanel getPanelStart() {
-        return this.panelStart;
+    public void showGameBoard() {
+        this.showPanel(this.gbp);
     }
 
-    public MenuBar getMb() {
-        return this.mb;
+    public void showStartScreen() {
+        this.showPanel(this.panelStart);
     }
 
-    public InstructionsPanel getIp() {
-        return this.ip;
+    public void showInstructionScreen() {
+        this.showPanel(this.ip);
     }
-    
-	public EndGamePanel getEgp() {
-		return egp;
-	}
+
+    public void showEndScreen() {
+        this.showPanel(this.egp);
+    }
 
 
     public void connectToServer() {
@@ -160,6 +164,22 @@ public class Controller implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        if (reconnect) {
+            reconnect = false;
+            this.playAgain();
+
+        }
+    }
+
+    public void playAgain() {
+        try {
+            this.gbp = new GameBoardPanel(this);
+            this.connectToServer();
+            this.showGameBoard();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private boolean updateState(GameState gameState) {
@@ -167,19 +187,17 @@ public class Controller implements Runnable {
 
         if (gameState.isOpponentLeft()) {
             keepPlaying = false;
+            reconnect = true;
         }
 
         if (gameState.isGameOver()) {
             keepPlaying = false;
         }
 
-        if (keepPlaying) {
-            this.gbp.updateState(gameState);
-        }
+        this.gbp.updateState(gameState);
 
         this.frame.repaint();
         return keepPlaying;
-
     }
 
 }

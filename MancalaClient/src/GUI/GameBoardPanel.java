@@ -15,35 +15,47 @@ import javax.swing.JPanel;
 
 public class GameBoardPanel extends JPanel {
 
-    private final Controller controller;
-    private final Store yourStore;
-    private final Store opponentsStore;
+    private Controller controller;
+    private Store yourStore;
+    private Store opponentsStore;
 
     private ImageIcon game_Board_Icon = new ImageIcon(this.getClass().getResource("/resources/mancala_GB_Background.png"));
     private ImageIcon game_Board_Title_Icon = new ImageIcon(this.getClass().getResource("/resources/Gb_Title.png"));
     private ImageIcon yourTurnIcon = new ImageIcon(this.getClass().getResource("/resources/Your_Turn.png"));
 
+    // TODO: need image saying we are waiting for hte other player to join
+    private ImageIcon waitingForOpponentIcon = new ImageIcon(this.getClass().getResource("/resources/Start_Button.png"));
+
     private Pit[] pits = new Pit[12];
     private JLabel bgLabel;
     private JLabel yourTurn;
+    private JLabel waitingForOpponent;
     private JLabel title;
+    private boolean boardActive = false;
 
-    
+
     public GameBoardPanel(Controller controller) throws MalformedURLException, IOException {
         this.controller = controller;
         this.setLayout(null);
 
-        
-        
+
         this.title = new JLabel();
         this.title.setBounds(175, 34, 450, 100);
         this.title.setIcon(game_Board_Title_Icon);
-        this.add(title); 
+        this.add(title);
 
         this.yourTurn = new JLabel();
         this.yourTurn.setBounds(175, 460, 450, 100);
         this.yourTurn.setIcon(yourTurnIcon);
-        this.add(yourTurn);      
+        this.yourTurn.setVisible(false);
+        this.add(yourTurn);
+
+
+        this.waitingForOpponent = new JLabel();
+        this.waitingForOpponent.setBounds(175, 460, 450, 100);
+        this.waitingForOpponent.setIcon(waitingForOpponentIcon);
+        this.waitingForOpponent.setVisible(true);
+        this.add(waitingForOpponent);
 
 
         this.pits[0] = new Pit(117, 310, false, controller, 0);
@@ -61,15 +73,18 @@ public class GameBoardPanel extends JPanel {
         this.pits[11] = new Pit(117, 190, true, controller);
 
         for (Pit pit : this.pits) {
+            pit.setVisible(false);
             this.add(pit);
         }
 
         this.opponentsStore = new Store("", 33, 135, true);
         this.yourStore = new Store("", 690, 135, false);
 
+        this.opponentsStore.setVisible(false);
+        this.yourStore.setVisible(false);
+
         this.add(this.opponentsStore);
         this.add(this.yourStore);
-
 
 
         this.bgLabel = new JLabel();
@@ -81,6 +96,10 @@ public class GameBoardPanel extends JPanel {
 
 
     public void updateState(GameState gameState) {
+        if (!gameState.isWaitingForOpponent()) {
+            this.activateBoard();
+        }
+
 
         int[] yourPits = gameState.getYourPits();
         int[] opponentsPits = gameState.getOpponentsPits();
@@ -88,7 +107,7 @@ public class GameBoardPanel extends JPanel {
         for (int i = 0; i < yourPits.length; i++) {
             this.pits[i].update(yourPits[i]);
 
-            if (!gameState.isYourTurn()) {
+            if (!gameState.isYourTurn() || gameState.isGameOver()) {
                 this.pits[i].disableButton();
             } else {
                 this.pits[i].enableButton();
@@ -101,13 +120,22 @@ public class GameBoardPanel extends JPanel {
 
         this.yourStore.update(gameState.getYourStore(), gameState.getYourLabel());
         this.opponentsStore.update(gameState.getOpponentsStore(), gameState.getOpponentsLabel());
-        
-        if(gameState.isYourTurn() == true){
-        	
-        	yourTurn.setVisible(true);
-        	
-        }else{
-        	yourTurn.setVisible(false);
+
+        yourTurn.setVisible(gameState.isYourTurn());
+    }
+
+    private void activateBoard() {
+        if (!this.boardActive) {
+            this.waitingForOpponent.setVisible(false);
+
+            for (Pit pit : this.pits) {
+                pit.setVisible(true);
+            }
+
+            this.opponentsStore.setVisible(true);
+            this.yourStore.setVisible(true);
+
+            this.boardActive = true;
         }
     }
 }

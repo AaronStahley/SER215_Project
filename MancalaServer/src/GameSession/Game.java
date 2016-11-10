@@ -3,6 +3,7 @@ package GameSession;
 import Communication.GameState;
 import Server.Controller;
 
+import java.io.EOFException;
 import java.io.IOException;
 
 
@@ -25,6 +26,9 @@ public class Game implements Runnable {
 
         System.out.println("-- Starting Game:");
 
+        this.player1.getState().setWaitingForOpponent(false);
+        this.player2.getState().setWaitingForOpponent(false);
+
         // Start Game
         try {
             this.player1.setTurn(true);
@@ -33,6 +37,8 @@ public class Game implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
 
         while (keepGameActive) {
             try {
@@ -55,6 +61,23 @@ public class Game implements Runnable {
 
                 keepGameActive = (this.player1.isConnected() && this.player2.isConnected());
 
+            } catch (EOFException e) {
+                System.out.println("user disconnected!!!!!");
+
+                try {
+                    if (this.player1.isConnected()) {
+                        this.player1.sendOpponentLeftState();
+                    }
+
+                    if (this.player2.isConnected()) {
+                        this.player2.sendOpponentLeftState();
+                    }
+
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+
+                keepGameActive = false;
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (ClassNotFoundException e) {
@@ -65,17 +88,12 @@ public class Game implements Runnable {
             }
         }
 
+        System.out.println(" -- Game Over, disconnecting!");
 
         try {
             this.player1.disconnect();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
             this.player2.disconnect();
         } catch (IOException e) {
-            e.printStackTrace();
         }
 
         Controller.clearSession(this.gameId);
