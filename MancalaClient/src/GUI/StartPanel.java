@@ -103,8 +103,7 @@ public class StartPanel extends JPanel {
                 // Removes the startFrame and replaces it to the InstructionsPanel.
                 controller.getFrame().getContentPane().removeAll();
                 controller.getFrame().getContentPane().add(controller.getIp());
-                controller.getFrame().repaint();
-//                controller.getFrame().revalidate(); // refreshes the JFrame.
+                controller.getFrame().revalidate(); // refreshes the JFrame.
             }
         });
 

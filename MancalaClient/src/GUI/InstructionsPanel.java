@@ -15,29 +15,25 @@ import Client.Controller;
 
 public class InstructionsPanel extends JPanel {
 	
-    public ImageIcon instructionsIcon = new ImageIcon(this.getClass().getResource("/resources/directions_Image.png"));
+    private ImageIcon instructionsIcon = new ImageIcon(this.getClass().getResource("/resources/directions_Image.png"));
 
-    public static JButton StartButton;
+    private JButton StartButton;
 
-    public static JScrollPane instructionsScrollPane;
+    private JScrollPane instructionsScrollPane;
     
-    public static JLabel instructionsLabel;
+    private JLabel instructionsLabel;
     protected Controller controller;
 
     public InstructionsPanel(Controller c) {
         this.controller = c;
         setLayout(null);
         
-        
-
-
-
         StartButton = new JButton("Start Game");
-        InstructionsPanel.StartButton.setBounds(335, 520, 100, 25);
+        StartButton.setBounds(335, 542, 100, 25);
         add(StartButton);
 
-        instructionsScrollPane = new JScrollPane(instructionsLabel = new JLabel());
-        instructionsScrollPane.setBounds(0, 0, 795, 520);
+        instructionsScrollPane = new JScrollPane(instructionsLabel = new JLabel(instructionsIcon));
+        instructionsScrollPane.setBounds(0, 0, 795, 540);
         instructionsScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         instructionsScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         instructionsScrollPane.setMaximumSize(getSize());

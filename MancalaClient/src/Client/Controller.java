@@ -21,6 +21,7 @@ public class Controller implements Runnable {
     private InstructionsPanel ip;
     private ObjectInputStream fromServer;
     private ObjectOutputStream toServer;
+    private EndGamePanel egp; 
 
     public Controller() {
         try {
@@ -43,6 +44,8 @@ public class Controller implements Runnable {
             this.panelStart = new StartPanel(this);
             this.gbp = new GameBoardPanel(this);
             this.ip = new InstructionsPanel(this);
+            this.egp = new EndGamePanel(this);
+            
             // ----------------------//
 
             //Adds the StartPanel to the frame
@@ -76,6 +79,10 @@ public class Controller implements Runnable {
     public InstructionsPanel getIp() {
         return this.ip;
     }
+    
+	public EndGamePanel getEgp() {
+		return egp;
+	}
 
 
     public void connectToServer() {
@@ -174,4 +181,5 @@ public class Controller implements Runnable {
         return keepPlaying;
 
     }
+
 }

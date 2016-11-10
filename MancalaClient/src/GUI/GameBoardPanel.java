@@ -20,26 +20,30 @@ public class GameBoardPanel extends JPanel {
     private final Store opponentsStore;
 
     private ImageIcon game_Board_Icon = new ImageIcon(this.getClass().getResource("/resources/mancala_GB_Background.png"));
+    private ImageIcon game_Board_Title_Icon = new ImageIcon(this.getClass().getResource("/resources/Gb_Title.png"));
+    private ImageIcon yourTurnIcon = new ImageIcon(this.getClass().getResource("/resources/Your_Turn.png"));
 
     private Pit[] pits = new Pit[12];
-    public JLabel bgLabel;
-    public JLabel yourTurn;
+    private JLabel bgLabel;
+    private JLabel yourTurn;
+    private JLabel title;
 
-
-    private ImageIcon yourTurnIcon = new ImageIcon(this.getClass().getResource("/resources/Player_01_Turn.png"));
-
-
+    
     public GameBoardPanel(Controller controller) throws MalformedURLException, IOException {
         this.controller = controller;
         this.setLayout(null);
 
-        Image game_Board_Panel_Scaled = game_Board_Icon.getImage().getScaledInstance(800, 600, Image.SCALE_DEFAULT);
-        ImageIcon new_game_Board_Icon = new ImageIcon(game_Board_Panel_Scaled);
+        
+        
+        this.title = new JLabel();
+        this.title.setBounds(175, 34, 450, 100);
+        this.title.setIcon(game_Board_Title_Icon);
+        this.add(title); 
 
-
-        this.yourTurn = new JLabel("Player Turn");
+        this.yourTurn = new JLabel();
+        this.yourTurn.setBounds(175, 460, 450, 100);
         this.yourTurn.setIcon(yourTurnIcon);
-        this.add(yourTurn);
+        this.add(yourTurn);      
 
 
         this.pits[0] = new Pit(117, 310, false, controller, 0);
@@ -70,7 +74,7 @@ public class GameBoardPanel extends JPanel {
 
         this.bgLabel = new JLabel();
         this.bgLabel.setBounds(0, 0, 800, 600);
-        this.bgLabel.setIcon(new_game_Board_Icon);
+        this.bgLabel.setIcon(game_Board_Icon);
         this.add(bgLabel);
 
     }
@@ -97,5 +101,13 @@ public class GameBoardPanel extends JPanel {
 
         this.yourStore.update(gameState.getYourStore(), gameState.getYourLabel());
         this.opponentsStore.update(gameState.getOpponentsStore(), gameState.getOpponentsLabel());
+        
+        if(gameState.isYourTurn() == true){
+        	
+        	yourTurn.setVisible(true);
+        	
+        }else{
+        	yourTurn.setVisible(false);
+        }
     }
 }

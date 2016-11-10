@@ -15,23 +15,23 @@ public class MenuBar extends JPanel {
 
     private final Controller controller;
 
-    static JMenuBar menuBar;
+    private JMenuBar menuBar;
 
     private JMenu fileJM;
     private JMenuItem exitJMI;
 
     public MenuBar(Controller controller) {
         this.controller = controller;
-//        this.setLayout(null);
+        this.setLayout(null);
     }
 
     public JMenuBar createMenuBar() {
 
-        setLayout(new BorderLayout());
+        setLayout(null);
 
         // --------------- Menu Bar Attributes -----------//
         menuBar = new JMenuBar();
-        //MenuBar.setBounds(0, 0,gd.getDisplayMode().getWidth(), 25);
+        menuBar.setBounds(0, 0, 800, 25);
         menuBar.setVisible(true);
         add(menuBar);
 

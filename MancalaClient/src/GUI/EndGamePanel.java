@@ -4,15 +4,17 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Client.Controller;
+
 public class EndGamePanel extends JPanel {
 
-    public static JLabel backGroundLabel;
-    public static JLabel winLabel;
-    public static JLabel loseLabel;
+	private JLabel backGroundLabel;
+    private JLabel winLabel;
+    private JLabel loseLabel;
 
     public static JButton playAgainButton;
 
-    public EndGamePanel() {
+    public EndGamePanel(Controller controller) {
 
         winLabel = new JLabel();
         add(winLabel);
