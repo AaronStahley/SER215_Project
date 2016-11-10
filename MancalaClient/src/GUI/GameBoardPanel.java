@@ -19,7 +19,7 @@ public class GameBoardPanel extends JPanel {
     private final Store yourStore;
     private final Store opponentsStore;
 
-    private ImageIcon game_Board_Icon = new ImageIcon(this.getClass().getResource("/resources/mancala_GB_01.png"));
+    private ImageIcon game_Board_Icon = new ImageIcon(this.getClass().getResource("/resources/mancala_GB_Background.png"));
 
     private Pit[] pits = new Pit[12];
     public JLabel bgLabel;
@@ -42,26 +42,26 @@ public class GameBoardPanel extends JPanel {
         this.add(yourTurn);
 
 
-        this.pits[0] = new Pit(178, 314, false, controller, 0);
-        this.pits[1] = new Pit(255, 314, false, controller, 1);
-        this.pits[2] = new Pit(333, 314, false, controller, 2);
-        this.pits[3] = new Pit(411, 314, false, controller, 3);
-        this.pits[4] = new Pit(489, 314, false, controller, 4);
-        this.pits[5] = new Pit(568, 314, false, controller, 5);
+        this.pits[0] = new Pit(117, 310, false, controller, 0);
+        this.pits[1] = new Pit(214, 310, false, controller, 1);
+        this.pits[2] = new Pit(312, 310, false, controller, 2);
+        this.pits[3] = new Pit(410, 310, false, controller, 3);
+        this.pits[4] = new Pit(508, 310, false, controller, 4);
+        this.pits[5] = new Pit(604, 310, false, controller, 5);
 
-        this.pits[6] = new Pit(568, 174, true, controller);
-        this.pits[7] = new Pit(489, 174, true, controller);
-        this.pits[8] = new Pit(411, 174, true, controller);
-        this.pits[9] = new Pit(333, 174, true, controller);
-        this.pits[10] = new Pit(255, 174, true, controller);
-        this.pits[11] = new Pit(178, 174, true, controller);
+        this.pits[6] = new Pit(604, 190, true, controller);
+        this.pits[7] = new Pit(508, 190, true, controller);
+        this.pits[8] = new Pit(410, 190, true, controller);
+        this.pits[9] = new Pit(312, 190, true, controller);
+        this.pits[10] = new Pit(214, 190, true, controller);
+        this.pits[11] = new Pit(117, 190, true, controller);
 
         for (Pit pit : this.pits) {
             this.add(pit);
         }
 
-        this.opponentsStore = new Store("Him", 109, 135, true);
-        this.yourStore = new Store("You", 632, 135, false);
+        this.opponentsStore = new Store("", 33, 135, true);
+        this.yourStore = new Store("", 690, 135, false);
 
         this.add(this.opponentsStore);
         this.add(this.yourStore);

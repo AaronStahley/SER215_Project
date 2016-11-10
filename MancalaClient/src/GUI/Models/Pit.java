@@ -53,7 +53,7 @@ public class Pit extends JPanel {
     public Pit(int x, int y, boolean labelBellow, Controller controller) {
         super();
         this.controller = controller;
-        this.setBounds(x, y, 53, 109);
+        this.setBounds(x, y, 80, 109);
         this.setLayout(null);
         this.setOpaque(false);
 
@@ -71,11 +71,11 @@ public class Pit extends JPanel {
         this.label.setForeground(Color.WHITE);
 
         if (labelBellow) {
-            this.button.setBounds(0, 0, 50, 50);
-            this.label.setBounds(20, 97, 15, 15);
+            this.button.setBounds(0, 0, 80, 80);
+            this.label.setBounds(33, 85, 15, 15);
         } else {
-            this.button.setBounds(0, 23, 50, 50);
-            this.label.setBounds(20, 5, 15, 15);
+            this.button.setBounds(0, 23, 80, 80);
+            this.label.setBounds(33, 3, 15, 15);
         }
 
 
