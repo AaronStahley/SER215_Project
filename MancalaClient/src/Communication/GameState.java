@@ -9,11 +9,11 @@ public class GameState implements Serializable {
     private String yourLabel = "You";
     private String opponentsLabel = "Opponent";
     private int yourStore = 0;
-  //  private int[] yourPits = {4, 4, 4, 4, 4, 4};
-    private int[] yourPits = {0, 0, 0, 0, 0,1};
+    private int[] yourPits = {4, 4, 4, 4, 4, 4};
+//    private int[] yourPits = {0, 0, 0, 0, 0,1};
     private int opponentsStore = 0;
-//    private int[] opponentsPits = {4, 4, 4, 4, 4, 4};
     private int[] opponentsPits = {4, 4, 4, 4, 4, 4};
+//    private int[] opponentsPits = {4, 4, 4, 4, 4, 4};
     private boolean youWin = false;
     private boolean yourTurn = false;
     private boolean gameOver = false;
