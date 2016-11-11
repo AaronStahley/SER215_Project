@@ -22,9 +22,7 @@ public class GameBoardPanel extends JPanel {
     private ImageIcon game_Board_Icon = new ImageIcon(this.getClass().getResource("/resources/mancala_GB_Background.png"));
     private ImageIcon game_Board_Title_Icon = new ImageIcon(this.getClass().getResource("/resources/Gb_Title.png"));
     private ImageIcon yourTurnIcon = new ImageIcon(this.getClass().getResource("/resources/Your_Turn.png"));
-
-    // TODO: need image saying we are waiting for hte other player to join
-    private ImageIcon waitingForOpponentIcon = new ImageIcon(this.getClass().getResource("/resources/Start_Button.png"));
+    private ImageIcon waitingForOpponentIcon = new ImageIcon(this.getClass().getResource("/resources/Waiting_For_Opponet.png"));
 
     private Pit[] pits = new Pit[12];
     private JLabel bgLabel;
@@ -100,10 +98,10 @@ public class GameBoardPanel extends JPanel {
             this.activateBoard();
         }
 
-
         int[] yourPits = gameState.getYourPits();
         int[] opponentsPits = gameState.getOpponentsPits();
 
+        
         for (int i = 0; i < yourPits.length; i++) {
             this.pits[i].update(yourPits[i]);
 
@@ -122,6 +120,8 @@ public class GameBoardPanel extends JPanel {
         this.opponentsStore.update(gameState.getOpponentsStore(), gameState.getOpponentsLabel());
 
         yourTurn.setVisible(gameState.isYourTurn());
+        
+        
     }
 
     private void activateBoard() {

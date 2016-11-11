@@ -51,7 +51,9 @@ public class Controller implements Runnable {
 
             //Adds the StartPanel to the frame
             this.frame.setJMenuBar(mb.createMenuBar());
-            this.frame.getContentPane().add(panelStart);
+           this.frame.getContentPane().add(panelStart);
+            //this.frame.getContentPane().add(egp);
+
             this.frame.setVisible(true);
 
         } catch (IOException e) {
@@ -192,10 +194,13 @@ public class Controller implements Runnable {
 
         if (gameState.isGameOver()) {
             keepPlaying = false;
+            
+            showEndScreen();            
         }
+        
 
         this.gbp.updateState(gameState);
-
+        this.frame.validate();
         this.frame.repaint();
         return keepPlaying;
     }
