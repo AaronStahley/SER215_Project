@@ -114,7 +114,7 @@ public class Player extends Socket {
             }
 
             this.state.setGameOver();
-            this.state.setGameOver();
+            opponentsState.setGameOver();
         }
 
         return opponentsState;
