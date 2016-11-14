@@ -13,6 +13,7 @@ import Communication.GameState;
 
 public class EndGamePanel extends JPanel {
 
+    private Controller controller;
     private ImageIcon background_Icon = new ImageIcon(this.getClass().getResource("/resources/End_Panel_BG.png"));
     private ImageIcon win_Icon = new ImageIcon(this.getClass().getResource("/resources/You_Win.png"));
     private ImageIcon lose_Icon = new ImageIcon(this.getClass().getResource("/resources/You_Lose.png"));
@@ -29,8 +30,8 @@ public class EndGamePanel extends JPanel {
     public JButton playAgainButton;
     
 
-    public EndGamePanel(Controller controller) {
-    	
+    public EndGamePanel(Controller ctr) {
+    	this.controller = ctr;
     	setLayout(null); 
 
         this.winLoseLabel = new JLabel();
