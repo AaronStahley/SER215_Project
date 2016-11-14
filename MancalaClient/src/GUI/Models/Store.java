@@ -57,8 +57,6 @@ public class Store extends JPanel {
         this.label.setFont(new Font("Times New Roman", Font.BOLD, 20));
 
 
-
-
         this.score = new JLabel("0");
         this.score.setOpaque(false);
         this.score.setForeground(Color.WHITE);

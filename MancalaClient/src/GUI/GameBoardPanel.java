@@ -101,11 +101,11 @@ public class GameBoardPanel extends JPanel {
         int[] yourPits = gameState.getYourPits();
         int[] opponentsPits = gameState.getOpponentsPits();
 
-        
+
         for (int i = 0; i < yourPits.length; i++) {
             this.pits[i].update(yourPits[i]);
 
-            if (!gameState.isYourTurn() || gameState.isGameOver()) {
+            if (!gameState.isYourTurn() || gameState.isGameOver() || yourPits[i] == 0) {
                 this.pits[i].disableButton();
             } else {
                 this.pits[i].enableButton();
@@ -120,8 +120,8 @@ public class GameBoardPanel extends JPanel {
         this.opponentsStore.update(gameState.getOpponentsStore(), gameState.getOpponentsLabel());
 
         yourTurn.setVisible(gameState.isYourTurn());
-        
-        
+
+
     }
 
     private void activateBoard() {
