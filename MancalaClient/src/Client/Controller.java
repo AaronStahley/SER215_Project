@@ -154,10 +154,9 @@ public class Controller implements Runnable {
 
                 keepPlaying = this.updateState(gameState);
             } catch (IOException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
+                reconnect = true;
+                keepPlaying=false;
+            } catch (ClassNotFoundException e) {}
         }
 
         try {

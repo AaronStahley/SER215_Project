@@ -35,9 +35,9 @@ public class Game implements Runnable {
             this.player1.sendState();
             this.player2.sendState();
         } catch (IOException e) {
-            e.printStackTrace();
+            keepGameActive=false;
+            this.resetConnections();
         }
-
 
 
         while (keepGameActive) {
@@ -63,28 +63,17 @@ public class Game implements Runnable {
 
             } catch (EOFException e) {
                 System.out.println("user disconnected!!!!!");
-
-                try {
-                    if (this.player1.isConnected()) {
-                        this.player1.sendOpponentLeftState();
-                    }
-
-                    if (this.player2.isConnected()) {
-                        this.player2.sendOpponentLeftState();
-                    }
-
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
-
+                this.resetConnections();
                 keepGameActive = false;
             } catch (IOException e) {
-                e.printStackTrace();
+                this.resetConnections();
+                keepGameActive = false;
+
             } catch (ClassNotFoundException e) {
-                e.printStackTrace();
+
             } catch (Exception e) {
-                System.out.println(e.getCause());
-                e.printStackTrace();
+//                System.out.println(e.getCause());
+//                e.printStackTrace();
             }
         }
 
@@ -117,5 +106,19 @@ public class Game implements Runnable {
             }
         }
         return true;
+    }
+
+
+    private void resetConnections(){
+        try {
+            if (this.player1.isConnected()) {
+                this.player1.sendOpponentLeftState();
+            }
+
+            if (this.player2.isConnected()) {
+                this.player2.sendOpponentLeftState();
+            }
+
+        } catch (IOException e1) {}
     }
 }

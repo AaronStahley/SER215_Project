@@ -14,7 +14,7 @@ import java.util.*;
  */
 public class Controller {
 
-    private static Map<String,Thread> gameSessions = new HashMap<String,Thread>();
+    private static Map<String, Thread> gameSessions = new HashMap<String, Thread>();
 
     public Controller() {
         try {
@@ -37,21 +37,27 @@ public class Controller {
                 player2.sendState();
                 System.out.println(" - Player 2 Connected");
 
+                
+                if (player1.isConnected() && player2.isConnected()) {
+                    System.out.println(" - Creating new game thread");
+                    // Create a new thread for this session of two players
+                    String sessionId = UUID.randomUUID().toString();
+                    Thread game = new Thread(new Game(sessionId, player1, player2));
 
-                System.out.println(" - Creating new game thread");
-                // Create a new thread for this session of two players
-                String sessionId = UUID.randomUUID().toString();
-                Thread game = new Thread(new Game(sessionId, player1, player2));
-
-                // Start the new thread
-                game.start();
+                    // Start the new thread
+                    game.start();
+                } else if (!player1.isConnected() && player2.isConnected()) {
+                    player2.sendOpponentLeftState();
+                } else if (!player2.isConnected() && player1.isConnected()) {
+                    player1.sendOpponentLeftState();
+                }
             }
         } catch (IOException ex) {
             System.err.println(ex);
         }
     }
 
-    public static void clearSession(String sessionId){
+    public static void clearSession(String sessionId) {
         Controller.gameSessions.remove(sessionId);
     }
 }
