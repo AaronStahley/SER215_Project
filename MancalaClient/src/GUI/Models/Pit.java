@@ -90,7 +90,7 @@ public class Pit extends JPanel {
         this.label.setText(num + "");
         ImageIcon img;
 
-        if (num > stoneImages.length) {
+        if (num >= stoneImages.length) {
             img = stoneImages[stoneImages.length-1];
         } else {
             img = stoneImages[num];
