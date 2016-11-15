@@ -11,20 +11,23 @@ import java.io.IOException;
  * Created by mike on 10/22/16.
  */
 public class Game implements Runnable {
-    private final String gameId;
+    private final int gameId;
     private Player player1;
     private Player player2;
 
-    public Game(String gameId, Player player1, Player player2) {
+    public Game(int gameId, Player player1, Player player2) {
         this.gameId = gameId;
         this.player1 = player1;
         this.player2 = player2;
+
+        this.player1.setController(this);
+        this.player2.setController(this);
     }
 
     public void run() {
         boolean keepGameActive = true;
 
-        System.out.println("-- Starting Game:");
+        this.logMessage("Starting Game:");
 
         this.player1.getState().setWaitingForOpponent(false);
         this.player2.getState().setWaitingForOpponent(false);
@@ -35,7 +38,7 @@ public class Game implements Runnable {
             this.player1.sendState();
             this.player2.sendState();
         } catch (IOException e) {
-            keepGameActive=false;
+            keepGameActive = false;
             this.resetConnections();
         }
 
@@ -44,7 +47,7 @@ public class Game implements Runnable {
             try {
 
                 while (this.player1.isTurn()) {
-                    System.out.println(" -- Waiting for player 1 turn");
+                    this.logMessage("Waiting for player 1 to go");
                     keepGameActive = this.playersTurn(this.player1, this.player2);
                 }
                 if (!keepGameActive) {
@@ -52,7 +55,7 @@ public class Game implements Runnable {
                 }
 
                 while (this.player2.isTurn()) {
-                    System.out.println(" -- Waiting for player 2 turn");
+                    this.logMessage("Waiting for player 2 to go");
                     keepGameActive = this.playersTurn(this.player2, this.player1);
                 }
                 if (!keepGameActive) {
@@ -62,7 +65,7 @@ public class Game implements Runnable {
                 keepGameActive = (this.player1.isConnected() && this.player2.isConnected());
 
             } catch (EOFException e) {
-                System.out.println("user disconnected!!!!!");
+                this.logMessage("User disconnected");
                 this.resetConnections();
                 keepGameActive = false;
             } catch (IOException e) {
@@ -72,12 +75,10 @@ public class Game implements Runnable {
             } catch (ClassNotFoundException e) {
 
             } catch (Exception e) {
-//                System.out.println(e.getCause());
-//                e.printStackTrace();
             }
         }
 
-        System.out.println(" -- Game Over, disconnecting!");
+        this.logMessage("Game Over, disconnecting");
 
         try {
             this.player1.disconnect();
@@ -96,6 +97,7 @@ public class Game implements Runnable {
 
                 player.sendState();
 
+
                 if (opponent.isConnected()) {
                     opponent.setState(opponentsState)
                             .sendState();
@@ -109,7 +111,7 @@ public class Game implements Runnable {
     }
 
 
-    private void resetConnections(){
+    private void resetConnections() {
         try {
             if (this.player1.isConnected()) {
                 this.player1.sendOpponentLeftState();
@@ -119,6 +121,11 @@ public class Game implements Runnable {
                 this.player2.sendOpponentLeftState();
             }
 
-        } catch (IOException e1) {}
+        } catch (IOException e1) {
+        }
+    }
+
+    public void logMessage(String msg) {
+        System.out.println("   [game " + this.gameId + "] " + msg);
     }
 }

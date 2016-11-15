@@ -2,6 +2,7 @@ package GameSession;
 
 import Communication.GameEvent;
 import Communication.GameState;
+import Output.Table.Table;
 
 import java.io.*;
 import java.net.Socket;
@@ -14,6 +15,7 @@ public class Player extends Socket {
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
     private GameState state;
+    private Game controller;
 
 
     public Player() {
@@ -23,10 +25,7 @@ public class Player extends Socket {
     public GameState waitForMove() throws IOException, ClassNotFoundException {
         GameEvent playerAction = (GameEvent) this.inputStream.readObject();
 
-        System.out.println(" - New Event:");
-        System.out.print("  * Button Clicked: ");
-        System.out.println(playerAction.buttonPressed);
-
+        this.controller.logMessage(this.getName() + " clicked button " + playerAction.buttonPressed);
 
         // need to read input and process it and then update the this.state
 
@@ -49,8 +48,12 @@ public class Player extends Socket {
                 // check if we need to steal the opponents stones
                 if (stonesToDistribute == 0 && yourPits[i] == 1) {
                     int pitToSteal = Math.abs((i % 10) - 5);
-                    yourStore += opponentsPits[pitToSteal];
-                    opponentsPits[pitToSteal] = 0;
+                    if (opponentsPits[pitToSteal] > 0) {
+                        yourStore += yourPits[i];
+                        yourStore += opponentsPits[pitToSteal];
+                        yourPits[i] = 0;
+                        opponentsPits[pitToSteal] = 0;
+                    }
                 }
             }
             startingPitIndex = 0;
@@ -117,6 +120,14 @@ public class Player extends Socket {
             opponentsState.setGameOver();
         }
 
+
+        String[] header = {"Label", "Score", "Pits", "Turn", "Game Over", "Opponent Left", "Won"};
+        String[][] rows = {
+                {this.state.getYourLabel(), this.state.getYourStore() + "", Arrays.toString(this.state.getYourPits()), Boolean.toString(this.state.isYourTurn()), Boolean.toString(this.state.isGameOver()), Boolean.toString(this.state.isOpponentLeft()), Boolean.toString(this.state.isYouWin())},
+                {opponentsState.getYourLabel(), opponentsState.getYourStore() + "", Arrays.toString(opponentsState.getYourPits()), Boolean.toString(opponentsState.isYourTurn()), Boolean.toString(opponentsState.isGameOver()), Boolean.toString(opponentsState.isOpponentLeft()), Boolean.toString(opponentsState.isYouWin())}
+        };
+
+        this.controller.logMessage("Sending State: \n" + (new Table(header, rows).toString()));
         return opponentsState;
     }
 
@@ -161,5 +172,13 @@ public class Player extends Socket {
 
     public boolean isTurn() {
         return this.state.isYourTurn();
+    }
+
+    public void setController(Game controller) {
+        this.controller = controller;
+    }
+
+    public String getName() {
+        return this.getState().getYourLabel();
     }
 }
