@@ -21,7 +21,6 @@ public class Controller implements Runnable {
     private InstructionsPanel ip;
     private ObjectInputStream fromServer;
     private ObjectOutputStream toServer;
-    private EndGamePanel egp;
     private boolean reconnect = false;
 
     public Controller() {
@@ -45,7 +44,6 @@ public class Controller implements Runnable {
             this.panelStart = new StartPanel(this);
             this.gbp = new GameBoardPanel(this);
             this.ip = new InstructionsPanel(this);
-            this.egp = new EndGamePanel(this);
 
             // ----------------------//
 
@@ -85,11 +83,6 @@ public class Controller implements Runnable {
     public void showInstructionScreen() {
         this.showPanel(this.ip);
     }
-
-    public void showEndScreen() {
-        this.showPanel(this.egp);
-    }
-
 
     public void connectToServer() {
         try {
@@ -193,8 +186,7 @@ public class Controller implements Runnable {
 
         if (gameState.isGameOver()) {
             keepPlaying = false;
-            
-            showEndScreen();            
+                      
         }
         
 

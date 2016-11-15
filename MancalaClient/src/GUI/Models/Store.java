@@ -101,7 +101,7 @@ public class Store extends JPanel {
         this.score.setText(score + "");
         ImageIcon img;
 
-        if (score > stoneImages.length) {
+        if (score >= stoneImages.length) {
             img = stoneImages[stoneImages.length - 1];
         } else {
             img = stoneImages[score];

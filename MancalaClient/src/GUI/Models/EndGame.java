@@ -1,4 +1,4 @@
-package GUI;
+package GUI.Models;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,12 +9,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Client.Controller;
-import Communication.GameState;
 
-public class EndGamePanel extends JPanel {
-
-    private Controller controller;
-    private ImageIcon background_Icon = new ImageIcon(this.getClass().getResource("/resources/End_Panel_BG.png"));
+public class EndGame extends JPanel{
+	
+	private ImageIcon background_Icon = new ImageIcon(this.getClass().getResource("/resources/End_Panel_BG.png"));
     private ImageIcon win_Icon = new ImageIcon(this.getClass().getResource("/resources/You_Win.png"));
     private ImageIcon lose_Icon = new ImageIcon(this.getClass().getResource("/resources/You_Lose.png"));
     private ImageIcon tie_Icon = new ImageIcon(this.getClass().getResource("/resources/You_Tied.png"));
@@ -22,60 +20,58 @@ public class EndGamePanel extends JPanel {
     private ImageIcon play_Again_Hover_Icon = new ImageIcon(this.getClass().getResource("/resources/Play_Again_Hover.png"));
     private ImageIcon exit_Icon = new ImageIcon(this.getClass().getResource("/resources/Final_Exit_Image.png"));
     private ImageIcon exit_Hover_Icon = new ImageIcon(this.getClass().getResource("/resources/Final_Exit_Image_Hover.png"));
+    
+    private Controller controller;
 
-
-	private JLabel backGroundLabel;
+   
     private JLabel winLoseLabel;
-    private JButton exitButton; 
     public JButton playAgainButton;
     
-
-    public EndGamePanel(Controller ctr) {
-    	this.controller = ctr;
-    	setLayout(null); 
-
+    public EndGame(Controller ctr){
+        this.controller = ctr;
+        
+        this.setBounds(0,423, 800, 177);
+        this.setLayout(null);
+        this.setOpaque(false);
+        
+       
         this.winLoseLabel = new JLabel();
-        this.winLoseLabel.setBounds(91,32,619,149);
-      //  this.winLoseLabel.setIcon(win_Icon);
-        this.add(winLoseLabel);
-
+        this.winLoseLabel.setBounds(230,15,341,75);
+       this.winLoseLabel.setIcon(win_Icon);
+       	add(winLoseLabel);
+        
         this.playAgainButton = new JButton();
-        this.playAgainButton.setBounds(186,261,428,78);
+        this.playAgainButton.setBounds(300,90,202,46);
         this.playAgainButton.setBackground(null);
         this.playAgainButton.setContentAreaFilled(false);
         this.playAgainButton.setBorderPainted(false);
         this.playAgainButton.setOpaque(false);
         this.playAgainButton.setRolloverIcon(play_Again_Hover_Icon);
         this.playAgainButton.setIcon(play_Again_Icon);
-        this.add(playAgainButton);
-        
-        this.exitButton = new JButton();
-        this.exitButton.setBounds(308,406,178,82);
-        this.exitButton.setBackground(null);
-        this.exitButton.setContentAreaFilled(false);
-        this.exitButton.setBorderPainted(false);
-        this.exitButton.setOpaque(false);
-        this.exitButton.setRolloverIcon(exit_Hover_Icon);
-        this.exitButton.setIcon(exit_Icon);
-        this.add(exitButton); 
-
-        this.backGroundLabel = new JLabel();
-        this.backGroundLabel.setBounds(0, 0, 800, 600);
-        this.backGroundLabel.setIcon(background_Icon);
-        this.add(backGroundLabel);
+        add(playAgainButton);
         
         this.playAgainButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	controller.playAgain();
             }
         });
+    
 
-        this.exitButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
-        
     }
     
+    public void setStatusIcon(int winLoseTie){
+    	if(winLoseTie == 0){
+    		
+    		this.winLoseLabel.setIcon(win_Icon);
+    	
+    	}else if(winLoseTie == 1){
+    		
+    		this.winLoseLabel.setIcon(lose_Icon);
+    		
+    	}else{
+    		
+    		this.winLoseLabel.setIcon(tie_Icon);
+    		
+    	}
+    }
 }
