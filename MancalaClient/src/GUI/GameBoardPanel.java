@@ -2,6 +2,7 @@ package GUI;
 
 import Client.Controller;
 import Communication.GameState;
+import GUI.Models.EndGame;
 import GUI.Models.Pit;
 import GUI.Models.Store;
 
@@ -24,6 +25,7 @@ public class GameBoardPanel extends JPanel {
     private ImageIcon waitingForOpponentIcon = new ImageIcon(this.getClass().getResource("/Resources/Waiting_For_Opponet.png"));
 
     private Pit[] pits = new Pit[12];
+    private EndGame endGamePanel; 
     private JLabel bgLabel;
     private JLabel yourTurn;
     private JLabel waitingForOpponent;
@@ -35,7 +37,8 @@ public class GameBoardPanel extends JPanel {
         this.controller = controller;
         this.setLayout(null);
 
-
+    
+        
         this.title = new JLabel();
         this.title.setBounds(175, 34, 450, 100);
         this.title.setIcon(game_Board_Title_Icon);
@@ -82,6 +85,10 @@ public class GameBoardPanel extends JPanel {
 
         this.add(this.opponentsStore);
         this.add(this.yourStore);
+        
+        this.endGamePanel = new EndGame(this.controller); 
+        this.endGamePanel.setVisible(false);
+        this.add(endGamePanel);
 
 
         this.bgLabel = new JLabel();
@@ -119,6 +126,23 @@ public class GameBoardPanel extends JPanel {
         this.opponentsStore.update(gameState.getOpponentsStore(), gameState.getOpponentsLabel());
 
         yourTurn.setVisible(gameState.isYourTurn());
+        
+        if(gameState.isGameOver() && gameState.isYouWin() == true){
+        	
+        	this.endGamePanel.setVisible(true);
+        	this.endGamePanel.setStatusIcon(0);
+        }
+        else if(gameState.isGameOver() && gameState.isYouWin() == false){
+        	
+        	this.endGamePanel.setVisible(true);
+        	this.endGamePanel.setStatusIcon(1);
+        }
+        else if(gameState.isGameOver() && gameState.isTie() == false){
+        	
+        	this.endGamePanel.setVisible(true);
+        	this.endGamePanel.setStatusIcon(2);
+        	
+        }
 
 
     }
