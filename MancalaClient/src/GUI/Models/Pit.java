@@ -15,19 +15,19 @@ import java.io.IOException;
 public class Pit extends JPanel {
 
     private static ImageIcon[] stoneImages = {
-            new ImageIcon(Pit.class.getResource("/resources/Mancala_Stones_00.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Mancala_Stones_01.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Mancala_Stones_02.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Mancala_Stones_03.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Mancala_Stones_04.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Mancala_Stones_05.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Mancala_Stones_06.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Mancala_Stones_07.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Mancala_Stones_08.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Mancala_Stones_09.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Mancala_Stones_10.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Mancala_Stones_11.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Mancala_Stones_12.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Mancala_Stones_00.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Mancala_Stones_01.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Mancala_Stones_02.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Mancala_Stones_03.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Mancala_Stones_04.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Mancala_Stones_05.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Mancala_Stones_06.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Mancala_Stones_07.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Mancala_Stones_08.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Mancala_Stones_09.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Mancala_Stones_10.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Mancala_Stones_11.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Mancala_Stones_12.png")),
     };
     private Controller controller;
     private int buttonId;

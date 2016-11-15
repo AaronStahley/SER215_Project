@@ -4,8 +4,12 @@ import Communication.GameState;
 import GameSession.Game;
 import GameSession.Player;
 import Utilites.ServerSocket;
+import Utilites.TextAreaOutputStream;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.*;
 
 
@@ -17,6 +21,25 @@ public class Controller {
     private static Map<String, Thread> gameSessions = new HashMap<String, Thread>();
 
     public Controller() {
+
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 300);
+        frame.setLocationRelativeTo(null);
+        frame.setResizable(true);
+        frame.add(new JLabel("Server"), BorderLayout.NORTH);
+
+        JTextArea ta = new JTextArea();
+        TextAreaOutputStream taos = new TextAreaOutputStream(ta, 60);
+        PrintStream ps = new PrintStream(taos);
+        System.setOut(ps);
+        System.setErr(ps);
+
+        frame.add(new JScrollPane(ta));
+
+        frame.pack();
+        frame.setVisible(true);
+
         try {
             // Create a server socket
             ServerSocket serverSocket = new ServerSocket(8000);
@@ -37,7 +60,7 @@ public class Controller {
                 player2.sendState();
                 System.out.println(" - Player 2 Connected");
 
-                
+
                 if (player1.isConnected() && player2.isConnected()) {
                     System.out.println(" - Creating new game thread");
                     // Create a new thread for this session of two players

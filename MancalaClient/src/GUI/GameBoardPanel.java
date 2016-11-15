@@ -5,7 +5,6 @@ import Communication.GameState;
 import GUI.Models.Pit;
 import GUI.Models.Store;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.MalformedURLException;
 
@@ -19,10 +18,10 @@ public class GameBoardPanel extends JPanel {
     private Store yourStore;
     private Store opponentsStore;
 
-    private ImageIcon game_Board_Icon = new ImageIcon(this.getClass().getResource("/resources/mancala_GB_Background.png"));
-    private ImageIcon game_Board_Title_Icon = new ImageIcon(this.getClass().getResource("/resources/Gb_Title.png"));
-    private ImageIcon yourTurnIcon = new ImageIcon(this.getClass().getResource("/resources/Your_Turn.png"));
-    private ImageIcon waitingForOpponentIcon = new ImageIcon(this.getClass().getResource("/resources/Waiting_For_Opponet.png"));
+    private ImageIcon game_Board_Icon = new ImageIcon(this.getClass().getResource("/Resources/mancala_GB_Background.png"));
+    private ImageIcon game_Board_Title_Icon = new ImageIcon(this.getClass().getResource("/Resources/GB_Title.png"));
+    private ImageIcon yourTurnIcon = new ImageIcon(this.getClass().getResource("/Resources/Your_Turn.png"));
+    private ImageIcon waitingForOpponentIcon = new ImageIcon(this.getClass().getResource("/Resources/Waiting_For_Opponet.png"));
 
     private Pit[] pits = new Pit[12];
     private JLabel bgLabel;
@@ -32,7 +31,7 @@ public class GameBoardPanel extends JPanel {
     private boolean boardActive = false;
 
 
-    public GameBoardPanel(Controller controller) throws MalformedURLException, IOException {
+    public GameBoardPanel(Controller controller) throws IOException {
         this.controller = controller;
         this.setLayout(null);
 

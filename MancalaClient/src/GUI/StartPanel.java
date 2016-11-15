@@ -16,14 +16,14 @@ import Client.Controller;
 
 public class StartPanel extends JPanel {
 
-    private ImageIcon title_Panel_Icon = new ImageIcon(this.getClass().getResource("/resources/Title_Panel_BG_01.png"));
-    private ImageIcon start_Icon = new ImageIcon(this.getClass().getResource("/resources/Start_Button.png"));
-    private ImageIcon exit_Icon = new ImageIcon(this.getClass().getResource("/resources/Exit_Button.png"));
-    private ImageIcon instructions_Icon = new ImageIcon(this.getClass().getResource("/resources/Instructions_Button.png"));
+    private ImageIcon title_Panel_Icon = new ImageIcon(this.getClass().getResource("/Resources/Title_Panel_BG_01.png"));
+    private ImageIcon start_Icon = new ImageIcon(this.getClass().getResource("/Resources/Start_Button.png"));
+    private ImageIcon exit_Icon = new ImageIcon(this.getClass().getResource("/Resources/Exit_Button.png"));
+    private ImageIcon instructions_Icon = new ImageIcon(this.getClass().getResource("/Resources/Instructions_Button.png"));
 
-    private ImageIcon start_Rollover_Icon = new ImageIcon(this.getClass().getResource("/resources/Start_Rollover_Button.png"));
-    private ImageIcon instructions_Rollover_Icon = new ImageIcon(this.getClass().getResource("/resources/Instructions_Rollover_Button.png"));
-    private ImageIcon exit_Rollover_Icon = new ImageIcon(this.getClass().getResource("/resources/Exit_Rollover_Button.png"));
+    private ImageIcon start_Rollover_Icon = new ImageIcon(this.getClass().getResource("/Resources/Start_Rollover_Button.png"));
+    private ImageIcon instructions_Rollover_Icon = new ImageIcon(this.getClass().getResource("/Resources/Instructions_Rollover_Button.png"));
+    private ImageIcon exit_Rollover_Icon = new ImageIcon(this.getClass().getResource("/Resources/Exit_Rollover_Button.png"));
 
 
     private static final long serialVersionUID = 1L;

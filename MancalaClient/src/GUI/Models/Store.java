@@ -1,7 +1,6 @@
 package GUI.Models;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 
 /**
@@ -10,32 +9,32 @@ import java.awt.*;
 public class Store extends JPanel {
 
     private static ImageIcon[] stoneImages = {
-            new ImageIcon(Pit.class.getResource("/resources/Player_Mancala_Stones_00.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Player_Mancala_Stones_01.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Player_Mancala_Stones_02.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Player_Mancala_Stones_03.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Player_Mancala_Stones_04.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Player_Mancala_Stones_05.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Player_Mancala_Stones_06.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Player_Mancala_Stones_07.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Player_Mancala_Stones_08.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Player_Mancala_Stones_09.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Player_Mancala_Stones_10.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Player_Mancala_Stones_11.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Player_Mancala_Stones_12.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Player_Mancala_Stones_13.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Player_Mancala_Stones_14.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Player_Mancala_Stones_15.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Player_Mancala_Stones_16.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Player_Mancala_Stones_17.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Player_Mancala_Stones_18.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Player_Mancala_Stones_19.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Player_Mancala_Stones_20.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Player_Mancala_Stones_21.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Player_Mancala_Stones_22.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Player_Mancala_Stones_23.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Player_Mancala_Stones_24.png")),
-            new ImageIcon(Pit.class.getResource("/resources/Player_Mancala_Stones_25.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Player_Mancala_Stones_00.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Player_Mancala_Stones_01.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Player_Mancala_Stones_02.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Player_Mancala_Stones_03.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Player_Mancala_Stones_04.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Player_Mancala_Stones_05.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Player_Mancala_Stones_06.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Player_Mancala_Stones_07.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Player_Mancala_Stones_08.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Player_Mancala_Stones_09.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Player_Mancala_Stones_10.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Player_Mancala_Stones_11.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Player_Mancala_Stones_12.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Player_Mancala_Stones_13.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Player_Mancala_Stones_14.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Player_Mancala_Stones_15.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Player_Mancala_Stones_16.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Player_Mancala_Stones_17.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Player_Mancala_Stones_18.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Player_Mancala_Stones_19.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Player_Mancala_Stones_20.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Player_Mancala_Stones_21.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Player_Mancala_Stones_22.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Player_Mancala_Stones_23.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Player_Mancala_Stones_24.png")),
+            new ImageIcon(Pit.class.getResource("/Resources/Player_Mancala_Stones_25.png")),
     };
     private JLabel labelNote;
     private JLabel label;

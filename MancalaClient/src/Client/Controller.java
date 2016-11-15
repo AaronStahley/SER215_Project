@@ -17,7 +17,6 @@ public class Controller implements Runnable {
     private JFrame frame;
     private GameBoardPanel gbp;
     private StartPanel panelStart;
-    private MenuBar mb;
     private InstructionsPanel ip;
     private ObjectInputStream fromServer;
     private ObjectOutputStream toServer;
@@ -41,7 +40,6 @@ public class Controller implements Runnable {
 
 
             // Contains all the JFrame attributes.
-            this.mb = new MenuBar(this);
             this.panelStart = new StartPanel(this);
             this.gbp = new GameBoardPanel(this);
             this.ip = new InstructionsPanel(this);
@@ -50,7 +48,6 @@ public class Controller implements Runnable {
             // ----------------------//
 
             //Adds the StartPanel to the frame
-            this.frame.setJMenuBar(mb.createMenuBar());
            this.frame.getContentPane().add(panelStart);
             //this.frame.getContentPane().add(egp);
 

@@ -9,19 +9,18 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Client.Controller;
-import Communication.GameState;
 
 public class EndGamePanel extends JPanel {
 
     private Controller controller;
-    private ImageIcon background_Icon = new ImageIcon(this.getClass().getResource("/resources/End_Panel_BG.png"));
-    private ImageIcon win_Icon = new ImageIcon(this.getClass().getResource("/resources/You_Win.png"));
-    private ImageIcon lose_Icon = new ImageIcon(this.getClass().getResource("/resources/You_Lose.png"));
-    private ImageIcon tie_Icon = new ImageIcon(this.getClass().getResource("/resources/You_Tied.png"));
-    private ImageIcon play_Again_Icon = new ImageIcon(this.getClass().getResource("/resources/Play_Again.png"));
-    private ImageIcon play_Again_Hover_Icon = new ImageIcon(this.getClass().getResource("/resources/Play_Again_Hover.png"));
-    private ImageIcon exit_Icon = new ImageIcon(this.getClass().getResource("/resources/Final_Exit_Image.png"));
-    private ImageIcon exit_Hover_Icon = new ImageIcon(this.getClass().getResource("/resources/Final_Exit_Image_Hover.png"));
+    private ImageIcon background_Icon = new ImageIcon(this.getClass().getResource("/Resources/End_Panel_BG.png"));
+    private ImageIcon win_Icon = new ImageIcon(this.getClass().getResource("/Resources/You_Win.png"));
+    private ImageIcon lose_Icon = new ImageIcon(this.getClass().getResource("/Resources/You_Lose.png"));
+    private ImageIcon tie_Icon = new ImageIcon(this.getClass().getResource("/Resources/You_Tied.png"));
+    private ImageIcon play_Again_Icon = new ImageIcon(this.getClass().getResource("/Resources/Play_Again.png"));
+    private ImageIcon play_Again_Hover_Icon = new ImageIcon(this.getClass().getResource("/Resources/Play_Again_Hover.png"));
+    private ImageIcon exit_Icon = new ImageIcon(this.getClass().getResource("/Resources/Final_Exit_Image.png"));
+    private ImageIcon exit_Hover_Icon = new ImageIcon(this.getClass().getResource("/Resources/Final_Exit_Image_Hover.png"));
 
 
 	private JLabel backGroundLabel;

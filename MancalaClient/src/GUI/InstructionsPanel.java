@@ -15,7 +15,7 @@ import Client.Controller;
 
 public class InstructionsPanel extends JPanel {
 
-    private ImageIcon instructionsIcon = new ImageIcon(this.getClass().getResource("/resources/directions_Image.png"));
+    private ImageIcon instructionsIcon = new ImageIcon(this.getClass().getResource("/Resources/directions_Image.png"));
     private JScrollPane instructionsScrollPane;
 
     private JLabel instructionsLabel;
