@@ -126,25 +126,21 @@ public class GameBoardPanel extends JPanel {
         this.opponentsStore.update(gameState.getOpponentsStore(), gameState.getOpponentsLabel());
 
         yourTurn.setVisible(gameState.isYourTurn());
-        
-        if(gameState.isGameOver() && gameState.isYouWin() == true){
-        	
-        	this.endGamePanel.setVisible(true);
-        	this.endGamePanel.setStatusIcon(0);
-        }
-        else if(gameState.isGameOver() && gameState.isYouWin() == false){
-        	
-        	this.endGamePanel.setVisible(true);
-        	this.endGamePanel.setStatusIcon(1);
-        }
-        else if(gameState.isGameOver() && gameState.isTie() == false){
-        	
-        	this.endGamePanel.setVisible(true);
-        	this.endGamePanel.setStatusIcon(2);
-        	
-        }
 
+        if(gameState.isGameOver()){
+            this.endGamePanel.setVisible(true);
 
+            if(gameState.isYouWin()){
+                this.endGamePanel.setStatusIcon(0);
+            }else{
+                this.endGamePanel.setStatusIcon(1);
+            }
+
+            if(gameState.isTie()){
+                this.endGamePanel.setStatusIcon(2);
+            }
+
+        }
     }
 
     private void activateBoard() {
