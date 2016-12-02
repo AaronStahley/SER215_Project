@@ -111,16 +111,14 @@ public class Game implements Runnable {
     }
 
 
-    private void resetConnections() {
+    public void resetConnections() {
         try {
-            if (this.player1.isConnected()) {
-                this.player1.sendOpponentLeftState();
-            }
+            this.player1.sendOpponentLeftState();
+        } catch (IOException e1) {
+        }
 
-            if (this.player2.isConnected()) {
-                this.player2.sendOpponentLeftState();
-            }
-
+        try {
+            this.player2.sendOpponentLeftState();
         } catch (IOException e1) {
         }
     }
@@ -128,4 +126,5 @@ public class Game implements Runnable {
     public void logMessage(String msg) {
         System.out.println("   [game " + this.gameId + "] " + msg);
     }
+
 }

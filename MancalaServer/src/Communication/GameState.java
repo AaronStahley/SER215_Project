@@ -127,7 +127,9 @@ public class GameState implements Serializable {
         return this.opponentLeft;
     }
 
-    public boolean isWaitingForOpponent() {  return this.waitingForOpponent;}
+    public boolean isWaitingForOpponent() {
+        return this.waitingForOpponent;
+    }
 
 
     public GameState generateOpponentsState() {

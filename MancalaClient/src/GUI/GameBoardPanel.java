@@ -2,13 +2,12 @@ package GUI;
 
 import Client.Controller;
 import Communication.GameState;
+
 import GUI.Models.EndGame;
 import GUI.Models.Pit;
 import GUI.Models.Store;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -25,7 +24,7 @@ public class GameBoardPanel extends JPanel {
     private ImageIcon waitingForOpponentIcon = new ImageIcon(this.getClass().getResource("/Resources/Waiting_For_Opponet.png"));
 
     private Pit[] pits = new Pit[12];
-    private EndGame endGamePanel; 
+    private EndGame endGamePanel;
     private JLabel bgLabel;
     private JLabel yourTurn;
     private JLabel waitingForOpponent;
@@ -37,8 +36,7 @@ public class GameBoardPanel extends JPanel {
         this.controller = controller;
         this.setLayout(null);
 
-    
-        
+
         this.title = new JLabel();
         this.title.setBounds(175, 34, 450, 100);
         this.title.setIcon(game_Board_Title_Icon);
@@ -85,8 +83,8 @@ public class GameBoardPanel extends JPanel {
 
         this.add(this.opponentsStore);
         this.add(this.yourStore);
-        
-        this.endGamePanel = new EndGame(this.controller); 
+
+        this.endGamePanel = new EndGame(this.controller);
         this.endGamePanel.setVisible(false);
         this.add(endGamePanel);
 
@@ -127,16 +125,16 @@ public class GameBoardPanel extends JPanel {
 
         yourTurn.setVisible(gameState.isYourTurn());
 
-        if(gameState.isGameOver()){
+        if (gameState.isGameOver()) {
             this.endGamePanel.setVisible(true);
 
-            if(gameState.isYouWin()){
+            if (gameState.isYouWin()) {
                 this.endGamePanel.setStatusIcon(0);
-            }else{
+            } else {
                 this.endGamePanel.setStatusIcon(1);
             }
 
-            if(gameState.isTie()){
+            if (gameState.isTie()) {
                 this.endGamePanel.setStatusIcon(2);
             }
 

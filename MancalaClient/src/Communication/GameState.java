@@ -10,10 +10,8 @@ public class GameState implements Serializable {
     private String opponentsLabel = "Opponent";
     private int yourStore = 0;
     private int[] yourPits = {4, 4, 4, 4, 4, 4};
-//    private int[] yourPits = {0, 0, 0, 0, 0, 1};
     private int opponentsStore = 0;
     private int[] opponentsPits = {4, 4, 4, 4, 4, 4};
-//    private int[] opponentsPits = {4, 4, 4, 4, 4, 4};
     private boolean youWin = false;
     private boolean yourTurn = false;
     private boolean gameOver = false;
@@ -47,7 +45,7 @@ public class GameState implements Serializable {
     public GameState setGameOver() {
         this.setYourTurn(false);
         this.gameOver = true;
-        
+
         return this;
     }
 
@@ -130,7 +128,9 @@ public class GameState implements Serializable {
         return this.opponentLeft;
     }
 
-    public boolean isWaitingForOpponent() {  return this.waitingForOpponent;}
+    public boolean isWaitingForOpponent() {
+        return this.waitingForOpponent;
+    }
 
 
     public GameState generateOpponentsState() {

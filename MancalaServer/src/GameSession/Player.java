@@ -12,22 +12,21 @@ import java.util.Arrays;
  * Created by mike on 10/22/16.
  */
 public class Player extends Socket {
+    private final Player player;
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
     private GameState state;
     private Game controller;
 
-
     public Player() {
-        // Create data input and output streams
+        this.player = this;
     }
+
 
     public GameState waitForMove() throws IOException, ClassNotFoundException {
         GameEvent playerAction = (GameEvent) this.inputStream.readObject();
 
         this.controller.logMessage(this.getName() + " clicked button " + playerAction.buttonPressed);
-
-        // need to read input and process it and then update the this.state
 
         int yourStore = this.state.getYourStore();
         int opponentsStore = this.state.getOpponentsStore();
@@ -77,7 +76,6 @@ public class Player extends Socket {
 
 
         // check to see if the game is over and update both state objects
-
         int yourPitsSum = 0;
         for (int pitCount : yourPits) {
             yourPitsSum += pitCount;
@@ -121,13 +119,14 @@ public class Player extends Socket {
         }
 
 
+        // print out new state to console
         String[] header = {"Label", "Score", "Pits", "Turn", "Game Over", "Opponent Left", "Won"};
         String[][] rows = {
                 {this.state.getYourLabel(), this.state.getYourStore() + "", Arrays.toString(this.state.getYourPits()), Boolean.toString(this.state.isYourTurn()), Boolean.toString(this.state.isGameOver()), Boolean.toString(this.state.isOpponentLeft()), Boolean.toString(this.state.isYouWin())},
                 {opponentsState.getYourLabel(), opponentsState.getYourStore() + "", Arrays.toString(opponentsState.getYourPits()), Boolean.toString(opponentsState.isYourTurn()), Boolean.toString(opponentsState.isGameOver()), Boolean.toString(opponentsState.isOpponentLeft()), Boolean.toString(opponentsState.isYouWin())}
         };
-
         this.controller.logMessage("Sending State: \n" + (new Table(header, rows).toString()));
+
         return opponentsState;
     }
 
@@ -180,5 +179,22 @@ public class Player extends Socket {
 
     public String getName() {
         return this.getState().getYourLabel();
+    }
+
+    public void monitorConnection() {
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    while (true) {
+                        Thread.sleep(5000);
+                        player.sendState();
+                    }
+                } catch (IOException e) {
+                    controller.resetConnections();
+                } catch (InterruptedException e) {
+                    controller.resetConnections();
+                }
+            }
+        }).start();
     }
 }

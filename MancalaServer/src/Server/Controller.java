@@ -4,6 +4,7 @@ import Communication.GameState;
 import GameSession.Game;
 import GameSession.Player;
 import Utilites.ServerSocket;
+
 import java.io.IOException;
 import java.util.*;
 
@@ -16,8 +17,7 @@ public class Controller {
     private static Map<Integer, Thread> gameSessions = new HashMap<Integer, Thread>();
 
     public Controller() {
-
-        int sessionCount =0;
+        int sessionCount = 0;
         try {
 
             // Create a server socket
@@ -31,11 +31,13 @@ public class Controller {
                 Player player1 = serverSocket.acceptPlayer();
                 player1.setState(new GameState("Player 1", "Player 2"));
                 player1.sendState();
+                player1.monitorConnection();
 
                 // Connect to player 2
                 Player player2 = serverSocket.acceptPlayer();
                 player2.setState(new GameState("Player 2", "Player 1"));
                 player2.sendState();
+                player2.monitorConnection();
 
 
                 if (player1.isConnected() && player2.isConnected()) {
